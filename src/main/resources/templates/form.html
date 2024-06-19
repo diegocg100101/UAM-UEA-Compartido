@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agregar UEA</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">UAM: UEA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/UEA/ListadoUEA">Listado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Agregar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-5">
+            <h2>Formulario</h2>
+            <form th:object="${uea}" method="Post" th:accion="@{/AgregarUEA}">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="clave" class="form-label">Clave</label>
+                    <input type="text" class="form-control" id="clave" name="clave" required>
+                </div>
+                <div class="mb-3">
+                    <label for="unidad" class="form-label">Unidad</label>
+                    <select class="form-select" id="unidad" name="unidad" required th:field="*{Unidad.idUnidad}">
+                        <option value=0>Selecciona una unidad</option>
+                        <option 
+                            th:each="unidad : ${unidades}"
+                            th:value="${unidad.IdUnidad}"
+                            th:text="${unidad.Nombre}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="tronco" class="form-label">Tronco</label>
+                    <select class="form-select" id="tronco" name="tronco" required th:field="*{Tronco.idTronco}">
+                        <option value=0>Selecciona un tronco</option>
+                        <option th:each="tronco : ${troncos}"
+                            th:value="${tronco.IdTronco}"
+                            th:text="${tronco.Nombre}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="trimestre" class="form-label">Trimestre</label>
+                    <select class="form-select" id="trimestre" name="trimestre" required th:field="*{Trimestre.idTrimestre}">
+                        <option value=0>Selecciona un trimestre</option>
+                        <option th:each="trimestre : ${trimestres}"
+                            th:value="${trimestre.IdTrimestre}"
+                            th:text="${trimestre.Nombre}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="creditos" class="form-label">Créditos</label>
+                    <input type="number" class="form-control" id="creditos" name="creditos" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+    </body>
+</html>
+
