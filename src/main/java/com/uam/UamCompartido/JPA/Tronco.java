@@ -19,6 +19,7 @@ public class Tronco {
     @Column(name="idtronco")
     @Id
     private int IdTronco;
+
     @Column(name="nombre")
     private String Nombre;
 

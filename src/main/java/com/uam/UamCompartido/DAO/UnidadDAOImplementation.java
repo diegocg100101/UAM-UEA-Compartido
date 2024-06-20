@@ -31,7 +31,7 @@ public class UnidadDAOImplementation implements UnidadDAO{
             unidades = queryUnidad.getResultList();
             
         } catch (Exception e) {
-            String ex=e.getLocalizedMessage();
+            String ex = e.getLocalizedMessage();
         }
         
         return unidades;

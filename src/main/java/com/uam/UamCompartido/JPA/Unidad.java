@@ -19,6 +19,7 @@ public class Unidad {
     @Id
     @Column(name="idunidad")
     private int IdUnidad;
+
     @Column(name="nombre")
     private String Nombre;
     

@@ -52,26 +52,35 @@ public class UEAController {
         model.addAttribute("ueas", ueas);
         return "listUEA";
     }
+
     @GetMapping("/EditarUEA")
     public String EditarUEA(){
         return "UEA";
     }
+
     @GetMapping("/EliminarUEA")
     public String EliminarUEA(){
         return "UEA";
     }
+
     @GetMapping("/AgregarUEA")
     public String AddUEA(Model model){
+
         UEA uea = new UEA();
         List<Unidad>unidades = unidadDAOImplementation.GetAll();
         model.addAttribute("unidades",unidades);
+
         List<Tronco>troncos = troncoDAOImplementation.GetAll();
         model.addAttribute("troncos",troncos);
+
         List<Trimestre>trimestres = trimestreDAOImplementation.GetAll();
         model.addAttribute("trimestres",trimestres);
+
         model.addAttribute("uea",uea);
+
         return "form";
     }
+
     @PostMapping("/AgregarUEA")
     public String AddUEA(@ModelAttribute("uea") UEA uea){
         ueaDAOImplementation.Add(uea);

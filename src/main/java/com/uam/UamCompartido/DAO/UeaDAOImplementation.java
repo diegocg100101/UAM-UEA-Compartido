@@ -29,7 +29,7 @@ public class UeaDAOImplementation implements UeaDAO{
         try {
             entityManager.persist(uea);
         } catch (Exception e) {
-            String ex=e.getLocalizedMessage();
+            String ex = e.getLocalizedMessage();
         }
     }
 

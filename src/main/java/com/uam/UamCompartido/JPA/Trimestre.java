@@ -19,6 +19,7 @@ public class Trimestre {
     @Id
     @Column(name="idtrimestre")
     private int IdTrimestre;
+
     @Column(name="nombre")
     private String Nombre;
 
