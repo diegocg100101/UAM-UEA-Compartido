@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org/" lang="es">
 <head>
-    <title>UAM Compartido</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAM: UEAs compartidas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -15,14 +10,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             crossorigin="anonymous"></script>
 </head>
 <body>
+
+<div th:insert="navbar :: navbar">  </div>
+
 <br>
-<div>
-    Hola UAM, está escribiendo: <span th:text="${nombre}"></span> <br>
-    Leo tiene: <span th:text="${edad} + ' años'"></span>
-    <span th:if="${edad}>=18">Eres mayor de edad.</span>
-    <span th:unless="${edad}>=18">Eres menor de edad.</span>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            BIENVENIDOS
+        </div>
+
+        <div class="card-body">
+            Esto es una prueba de cómo funciona la página principal:)
+        </div>
+    </div>
 </div>
-<br>
+<!--
+<div>
+    Está escribiendo: <span th:text="${nombre}"></span> <br>
+    <span th:text="${nombre} + ' tiene ' + ${edad} + ' años.'"></span> <br>
+    <span th:if="${edad}>=18">Es mayor de edad</span>
+    <span th:unless="${edad}>=18">Es menor de edad</span>
+</div>
+-->
 
 </body>
 </html>
