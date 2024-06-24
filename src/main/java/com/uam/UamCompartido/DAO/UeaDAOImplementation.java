@@ -45,6 +45,5 @@ public class UeaDAOImplementation implements UeaDAO{
         }
         return ueas;
     }
-    
 
 }

@@ -60,7 +60,7 @@ public class UEAController {
 
     @GetMapping("/EliminarUEA")
     public String EliminarUEA(){
-        return "UEA";
+        return "index";
     }
 
     @GetMapping("/AgregarUEA")
