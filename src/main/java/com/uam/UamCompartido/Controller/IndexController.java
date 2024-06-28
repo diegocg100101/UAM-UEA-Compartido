@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping
 public class IndexController {
     
     @GetMapping

@@ -17,4 +17,8 @@ public interface UeaDAO {
 
     public List<UEA> GetAll();
 
+    public void Delete(String clave);
+
+    public void Edit(String clave, UEA uea);
+
 }

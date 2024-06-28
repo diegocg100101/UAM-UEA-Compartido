@@ -46,4 +46,22 @@ public class UeaDAOImplementation implements UeaDAO{
         return ueas;
     }
 
+    @Override
+    @Transactional
+    public void Delete(String clave) {
+        UEA uea;
+        try {
+            uea = entityManager.find(UEA.class, clave);
+            entityManager.remove(uea);
+        } catch ( Exception e ) {
+            String ex = e.getLocalizedMessage();
+        }
+    }
+
+    @Override
+    @Transactional
+    public void Edit(String clave, UEA uea) {
+
+    }
+
 }

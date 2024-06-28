@@ -59,8 +59,16 @@ public class UEAController {
     }
 
     @GetMapping("/EliminarUEA")
-    public String EliminarUEA(){
-        return "index";
+    public String EliminarUEA(Model model){
+        UEA uea = new UEA();
+        model.addAttribute("uea", uea);
+        return "deleteUEA";
+    }
+
+    @PostMapping("/EliminarUEA")
+    public String EliminarUEA(@ModelAttribute("clave") String clave){
+        ueaDAOImplementation.Delete(clave);
+        return "deleteUEA";
     }
 
     @GetMapping("/AgregarUEA")
