@@ -4,15 +4,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="layout :: header">
+<head th:replace="~{layout :: header}">
 </head>
 <body>
-<div th:insert="layout :: navbar"></div>
+<div th:insert="~{layout :: navbar}"></div>
 
 <div class="row justify-content-center mt-5">
     <div class="container mt-5 col-lg-8 text-white">
         <h2 class="text-center">Listado de UEA</h2>
-        <table class="table table-dark table-striped">
+        <table class="table table-dark table-striped text-center">
             <thead>
             <tr>
                 <th scope="col">Clave</th>
@@ -21,6 +21,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <th scope="col">Tronco</th>
                 <th scope="col">Trimestre</th>
                 <th scope="col">Créditos</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -31,6 +32,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <td th:text="${uea.Tronco.Nombre}"></td>
                 <td th:text="${uea.Trimestre.Nombre}"></td>
                 <td th:text="${uea.Creditos}"></td>
+                <td>
+                    <a class="btn btn-warning m-2 col-7" th:href="@{'/UEA/EditarUEA/' + ${uea.Clave}}"><i class="bi bi-pencil"></i></a>
+                    <a class="btn btn-danger m-2 col-7"
+                       th:href="@{/UEA/EliminarUEA/{ClaveUEA} (ClaveUEA = ${uea.Clave}) }"><i class="bi bi-trash"></i></a>
+                </td>
             </tr>
             </tbody>
         </table>
