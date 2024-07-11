@@ -25,6 +25,11 @@ public class IndexController {
         model.addAttribute("edad", 16);
         return "index";
     }
+
+    @GetMapping("/AcercaDe")
+    public String AcercaDe(Model model){
+        return "acercade";
+    }
     
     
 }
