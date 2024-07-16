@@ -13,14 +13,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 <div class="container mt-5 text-white col-lg-3">
     <h2 class="text-center">Ingresa los datos de la UEA:</h2>
-    <form th:object="${uea}" method="Post" th:accion="@{/AgregarUEA}">
+    <form th:object="${uea}" method="Post" th:accion="${uea.Clave == null ? '/UEA/AgregarUEA' : '/UEA/EditarUEA' + '{Clave}'}">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+            <input type="text" class="form-control" id="nombre" name="nombre" required th:field="*{Nombre}">
         </div>
         <div class="mb-3">
             <label for="clave" class="form-label">Clave</label>
-            <input type="text" class="form-control" id="clave" name="clave" required>
+            <input type="text" class="form-control" id="clave" name="clave" required th:field="*{Clave}">
         </div>
         <div class="mb-3">
             <label for="unidad" class="form-label">Unidad</label>
@@ -52,9 +52,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
         <div class="mb-3">
             <label for="creditos" class="form-label">Créditos</label>
-            <input type="number" class="form-control" id="creditos" name="creditos" required>
+            <input type="number" class="form-control" id="creditos" name="creditos" required th:field="*{Creditos}">
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary" th:text="${uea.Clave == null ? 'Enviar' : 'Actualizar'}">Enviar</button>
     </form>
 </div>
 

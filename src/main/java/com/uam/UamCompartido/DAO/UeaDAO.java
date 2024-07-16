@@ -19,6 +19,7 @@ public interface UeaDAO {
 
     public void Delete(String clave);
 
-    public void Edit(String clave, UEA uea);
+    public void Edit(UEA uea);
 
+    public UEA GetByClave(String clave);
 }

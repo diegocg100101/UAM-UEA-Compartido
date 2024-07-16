@@ -50,22 +50,34 @@ public class UEAController {
         return "listUEA";
     }
 
-    @GetMapping("/EditarUEA")
-    public String EditarUEA(){
-        return "UEA";
-    }
-
-    @GetMapping("/EliminarUEA")
-    public String EliminarUEA(Model model){
-        UEA uea = new UEA();
+    @GetMapping("/EditarUEA/{ClaveUEA}")
+    public String EditarUEA(@PathVariable("ClaveUEA") String clave, Model model){
+        UEA uea = ueaDAOImplementation.GetByClave(clave);
         model.addAttribute("uea", uea);
-        return "deleteUEA";
+
+        List<Unidad>unidades = unidadDAOImplementation.GetAll();
+        model.addAttribute("unidades",unidades);
+
+        List<Tronco>troncos = troncoDAOImplementation.GetAll();
+        model.addAttribute("troncos",troncos);
+
+        List<Trimestre>trimestres = trimestreDAOImplementation.GetAll();
+        model.addAttribute("trimestres",trimestres);
+
+        model.addAttribute("uea",uea);
+        return "form";
     }
 
-    @PostMapping("/EliminarUEA")
-    public String EliminarUEA(@ModelAttribute("clave") String clave){
+    @PostMapping("/EditarUEA/{ClaveUEA}")
+    public String EditarUEA(@ModelAttribute("uea") UEA uea) {
+        ueaDAOImplementation.Edit(uea);
+        return "redirect:/UEA/ListadoUEA";
+    }
+
+    @GetMapping("/EliminarUEA/{ClaveUEA}")
+    public String EliminarUEA(@PathVariable("ClaveUEA") String clave){
         ueaDAOImplementation.Delete(clave);
-        return "deleteUEA";
+        return "redirect:/UEA/ListadoUEA";
     }
 
     @GetMapping("/AgregarUEA")
