@@ -110,4 +110,13 @@ public class UEAController {
         model.addAttribute("ueas", uea);
         return "listUEA";
     }
+
+    @GetMapping("/BuscarUEAPorNombre")
+    public String BuscarNOMBRE(@RequestParam("nombre") String nombre, Model model){
+        List<UEA> ueas = ueaDAOImplementation.GetByNombre(nombre);
+        model.addAttribute("ueas", ueas);
+        return "listUEA";
+    }
+
+
 }

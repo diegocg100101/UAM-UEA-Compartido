@@ -88,4 +88,17 @@ public class UeaDAOImplementation implements UeaDAO{
         return uea;
     }
 
+    @Override
+    @Transactional
+    public List<UEA> GetByNombre(String nombre) {
+        List<UEA> ueas = new ArrayList<>();
+        try {
+            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM UEA WHERE Nombre LIKE :nombre", UEA.class);
+            queryUEA.setParameter("nombre", "%" + nombre + "%");
+            ueas = queryUEA.getResultList();
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+        }
+        return ueas;
+    }
 }
