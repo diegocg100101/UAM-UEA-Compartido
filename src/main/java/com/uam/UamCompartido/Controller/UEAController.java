@@ -106,8 +106,8 @@ public class UEAController {
 
     @GetMapping("/BuscarUEA")
     public String BuscarUEA(@RequestParam("busqueda") String clave, Model model){
-        UEA uea = ueaDAOImplementation.GetByClave(clave);
-        model.addAttribute("ueas", uea);
+        List<UEA> ueas = ueaDAOImplementation.GetAllByClave(clave);
+        model.addAttribute("ueas", ueas);
         return "listUEA";
     }
 

@@ -20,9 +20,6 @@ public class IndexController {
     
     @GetMapping
     public String Index(Model model){
-        String nombre="Leo";
-        model.addAttribute("nombre", nombre);
-        model.addAttribute("edad", 16);
         return "index";
     }
 

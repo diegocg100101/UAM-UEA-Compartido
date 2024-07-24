@@ -5,6 +5,7 @@
 package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.JPA.UEA;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -22,4 +23,8 @@ public interface UeaDAO {
     public void Edit(UEA uea);
 
     public UEA GetByClave(String clave);
+
+    public List<UEA> GetAllByClave(String clave);
+
+    List<UEA> GetByNombre(String nombre);
 }
