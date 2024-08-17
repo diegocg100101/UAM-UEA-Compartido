@@ -38,7 +38,4 @@ public class Trimestre {
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
-    
-    
-    
 }
