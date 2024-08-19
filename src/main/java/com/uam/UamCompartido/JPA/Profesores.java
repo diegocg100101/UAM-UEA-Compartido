@@ -1,13 +1,17 @@
 package com.uam.UamCompartido.JPA;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author diego
  */
-
 @Entity
-public class Profesores {
+public class Profesores implements UserDetails {
 
     @Id
     @Column(name = "noeconomico")
@@ -29,6 +33,20 @@ public class Profesores {
     @ManyToOne
     @JoinColumn(name = "iddivision")
     private Division division;
+
+    @Column(name = "Password")
+    private String password;
+
+    @Column(name = "Email")
+    private String email;
+
+
+
+
+    public Profesores(){
+        this.Unidad = new Unidad();
+        this.division = new Division();
+    }
 
     public String getNoEeconomico() {
         return NoEeconomico;
@@ -76,5 +94,52 @@ public class Profesores {
 
     public void setDivision(Division division) {
         this.division = division;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getPassword() {
+        return "";
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
     }
 }

@@ -5,7 +5,6 @@
 package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.JPA.UEA;
-import jakarta.transaction.Transactional;
 import java.util.List;
 
 /**

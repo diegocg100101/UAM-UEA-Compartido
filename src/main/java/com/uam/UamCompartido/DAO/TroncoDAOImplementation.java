@@ -33,5 +33,4 @@ public class TroncoDAOImplementation implements TroncoDAO{
         }
         return troncos;
     }
-    
 }
