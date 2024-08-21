@@ -29,7 +29,7 @@ public class AuthService {
         profesor.setEmail(input.getEmail());
         profesor.setPassword(passwordEncoder.encode(input.getPassword()));
 
-        return profesor;
+        return profesoresDAO.save(profesor);
     }
 
     public Profesores authenticate(LoginUserDTO input){
@@ -39,6 +39,6 @@ public class AuthService {
                         input.getPassword()
                 )
         );
-        return profesoresDAO.findByNoEconomico(input.getEmail()).orElseThrow();
+        return profesoresDAO.findByEmail(input.getEmail()).orElseThrow();
     }
 }

@@ -31,6 +31,10 @@ public class Profesores implements UserDetails {
     private Unidad Unidad;
 
     @ManyToOne
+    @JoinColumn(name = "iddepartamento")
+    private Departamento departamento;
+
+    @ManyToOne
     @JoinColumn(name = "iddivision")
     private Division division;
 
@@ -40,9 +44,7 @@ public class Profesores implements UserDetails {
     @Column(name = "Email")
     private String email;
 
-
-
-
+    
     public Profesores(){
         this.Unidad = new Unidad();
         this.division = new Division();

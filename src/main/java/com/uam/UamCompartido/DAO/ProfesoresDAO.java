@@ -11,5 +11,9 @@ import java.util.Optional;
 public interface ProfesoresDAO {
     public List<Profesores> GetAll();
 
-    public Optional<Profesores> findByNoEconomico(String noEconomico);
+    public Profesores findByNoEconomico(String noEconomico);
+
+    public Optional<Profesores> findByEmail(String email);
+
+    public Profesores save(Profesores profesor);
 }

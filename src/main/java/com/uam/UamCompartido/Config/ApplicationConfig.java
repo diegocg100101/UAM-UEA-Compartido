@@ -25,7 +25,7 @@ public class ApplicationConfig {
 
     @Bean
     UserDetailsService userDetailsService() {
-        return username -> profesoresDAO.findByNoEconomico(username)
+        return username -> profesoresDAO.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
