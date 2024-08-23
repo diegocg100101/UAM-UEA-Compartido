@@ -7,10 +7,12 @@ import com.uam.UamCompartido.JPA.Profesores;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 /**
  * @author diego
  */
+@Service
 public class AuthService {
 
     private final PasswordEncoder passwordEncoder;
