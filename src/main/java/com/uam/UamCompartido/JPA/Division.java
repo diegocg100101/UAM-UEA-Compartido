@@ -9,15 +9,11 @@ import jakarta.persistence.*;
 @Entity
 public class Division {
     @Id
-    @Column(name = "idDivision")
+    @Column(name = "iddivision")
     private int idDivision;
 
     @Column(name = "nombre")
     private String nombre;
-
-    @ManyToOne
-    @JoinColumn(name = "idUnidad")
-    private Unidad unidad;
 
     public int getIdDivision() {
         return idDivision;
@@ -33,13 +29,5 @@ public class Division {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Unidad getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(Unidad unidad) {
-        this.unidad = unidad;
     }
 }

@@ -51,6 +51,7 @@ public class ProfesoresDAOImplementation implements ProfesoresDAO {
             entityManager.persist(profesor);
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();
+            System.out.println(ex);
         }
         return profesor;
     }

@@ -15,7 +15,7 @@ public class Profesores implements UserDetails {
 
     @Id
     @Column(name = "noeconomico")
-    private String NoEeconomico;
+    private String NoEconomico;
 
     @Column(name = "nombre")
     private String Nombre;
@@ -48,14 +48,15 @@ public class Profesores implements UserDetails {
     public Profesores(){
         this.Unidad = new Unidad();
         this.division = new Division();
+        this.departamento = new Departamento();
     }
 
-    public String getNoEeconomico() {
-        return NoEeconomico;
+    public String getNoEconomico() {
+        return NoEconomico;
     }
 
-    public void setNoEeconomico(String noEeconomico) {
-        NoEeconomico = noEeconomico;
+    public void setNoEconomico(String noEconomico) {
+        NoEconomico = noEconomico;
     }
 
     public String getNombre() {
@@ -108,6 +109,14 @@ public class Profesores implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     @Override
