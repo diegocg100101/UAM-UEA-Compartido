@@ -64,7 +64,7 @@ public class UEAController {
         model.addAttribute("trimestres",trimestres);
 
         model.addAttribute("uea",uea);
-        return "form";
+        return "formUEA";
     }
 
     @PostMapping("/EditarUEA/{ClaveUEA}")
@@ -94,7 +94,7 @@ public class UEAController {
 
         model.addAttribute("uea",uea);
 
-        return "form";
+        return "formUEA";
     }
 
     @PostMapping("/AgregarUEA")
