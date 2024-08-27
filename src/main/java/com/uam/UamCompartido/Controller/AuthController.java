@@ -42,7 +42,7 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login(){
-        return "acercade";
+        return "signupProfesores";
     }
 
     @PostMapping("/login")
