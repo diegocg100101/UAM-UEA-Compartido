@@ -7,7 +7,3 @@ body {
     background: -webkit-linear-gradient(to left, #ffc0cb, #800080);
     background: linear-gradient(to left, #ffc0cb, #800080);
 }
-
-.fondo-opacidad {
-    opacity: 0.5;
-}
