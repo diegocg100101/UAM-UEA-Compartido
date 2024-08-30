@@ -43,7 +43,7 @@ public class ProfesoresDAOImplementation implements ProfesoresDAO {
         Optional<Profesores> profesor;
         try{
             TypedQuery<Profesores> queryProf = entityManager.createQuery("FROM Profesores WHERE email = :email", Profesores.class);
-            queryProf.setParameter("email", "%" + email + "%");
+            queryProf.setParameter("email", email);
             profesores = queryProf.getResultList();
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();
