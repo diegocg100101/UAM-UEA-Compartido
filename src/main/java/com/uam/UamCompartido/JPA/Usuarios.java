@@ -1,7 +1,6 @@
 package com.uam.UamCompartido.JPA;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,9 +11,10 @@ import java.util.List;
  * @author diego
  */
 
-@MappedSuperclass
-public class Usuario implements UserDetails {
+@Entity
+public class Usuarios implements UserDetails {
 
+    @Id
     @Column(name = "Email")
     private String email;
 

@@ -11,7 +11,7 @@ import java.util.List;
  * @author diego
  */
 @Entity
-public class Profesores extends Usuario {
+public class Profesores {
 
     @Id
     @Column(name = "noeconomico")

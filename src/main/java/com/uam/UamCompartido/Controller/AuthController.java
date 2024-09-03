@@ -2,7 +2,7 @@ package com.uam.UamCompartido.Controller;
 
 import com.uam.UamCompartido.DTO.LoginUserDTO;
 import com.uam.UamCompartido.DTO.SignupUserDTO;
-import com.uam.UamCompartido.JPA.Profesores;
+import com.uam.UamCompartido.JPA.Usuarios;
 import com.uam.UamCompartido.Responses.LoginResponse;
 import com.uam.UamCompartido.Services.AuthService;
 import com.uam.UamCompartido.Services.JwtService;
@@ -35,11 +35,8 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> register(@RequestBody SignupUserDTO signupUserDTO){
-        if(!signupUserDTO.getNoEconomico().isEmpty()) {
-            Profesores profesorRegistrado = authService.signupProfesores(signupUserDTO);
-            return ResponseEntity.ok(profesorRegistrado);
-        }
-        return null;
+        Usuarios usuariosRegistrado = authService.signup(signupUserDTO);
+        return ResponseEntity.ok(usuariosRegistrado);
     }
 
     @GetMapping("/login")
@@ -49,8 +46,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDTO loginUserDTO){
-        Profesores profesoresAutenticado = authService.authenticate(loginUserDTO);
-        String jwtToken = jwtService.generateToken(profesoresAutenticado);
+        Usuarios usuariosAutenticado = authService.authenticate(loginUserDTO);
+        String jwtToken = jwtService.generateToken(usuariosAutenticado);
 
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setToken(jwtToken);

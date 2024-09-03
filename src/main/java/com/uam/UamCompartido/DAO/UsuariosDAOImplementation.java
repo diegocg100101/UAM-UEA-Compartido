@@ -1,8 +1,10 @@
 package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.JPA.Profesores;
+import com.uam.UamCompartido.JPA.Usuarios;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,16 +24,28 @@ public class UsuariosDAOImplementation implements UsuariosDAO{
 
 
     @Override
-    public Optional<?> findByEmail(String email) {
-        List<Profesores> profesores = new ArrayList<>();
-        Optional<Profesores> profesor;
+    public Optional<Usuarios> findByEmail(String email) {
+        List<Usuarios> usuarios = new ArrayList<>();
+        Optional<Usuarios> usuario;
         try{
-            TypedQuery<Profesores> queryProf = entityManager.createQuery("FROM Profesores WHERE email = :email", Profesores.class);
-            queryProf.setParameter("email", email);
-            profesores = queryProf.getResultList();
+            TypedQuery<Usuarios> queryUser = entityManager.createQuery("FROM Usuarios WHERE email = :email", Usuarios.class);
+            queryUser.setParameter("email", email);
+            usuarios = queryUser.getResultList();
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();
         }
-        return profesor = Optional.ofNullable(profesores.get(0));
+        return usuario = Optional.ofNullable(usuarios.get(0));
+    }
+
+    @Override
+    @Transactional
+    public Usuarios save(Usuarios usuarios) {
+        try{
+            entityManager.persist(usuarios);
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+            System.out.println(ex);
+        }
+        return usuarios;
     }
 }

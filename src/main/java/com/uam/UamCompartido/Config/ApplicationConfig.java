@@ -1,12 +1,14 @@
 package com.uam.UamCompartido.Config;
 
 import com.uam.UamCompartido.DAO.ProfesoresDAOImplementation;
+import com.uam.UamCompartido.DAO.UsuariosDAOImplementation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,15 +19,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class ApplicationConfig {
-    private final ProfesoresDAOImplementation profesoresDAO;
+    private final UsuariosDAOImplementation usuarioDAO;
 
-    public ApplicationConfig(ProfesoresDAOImplementation profesoresDAO) {
-        this.profesoresDAO = profesoresDAO;
+    public ApplicationConfig(ProfesoresDAOImplementation profesoresDAO, UsuariosDAOImplementation usuarioDAO) {
+        this.usuarioDAO = usuarioDAO;
     }
 
     @Bean
     UserDetailsService userDetailsService() {
-        return username -> profesoresDAO.findByEmail(username)
+        return username -> (UserDetails) usuarioDAO.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
