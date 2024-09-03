@@ -1,8 +1,9 @@
 package com.uam.UamCompartido.Services;
 
 import com.uam.UamCompartido.DAO.ProfesoresDAOImplementation;
-import com.uam.UamCompartido.DTO.LoginProfesoresDTO;
-import com.uam.UamCompartido.DTO.SignupProfesoresDTO;
+import com.uam.UamCompartido.DAO.UsuariosDAOImplementation;
+import com.uam.UamCompartido.DTO.LoginUserDTO;
+import com.uam.UamCompartido.DTO.SignupUserDTO;
 import com.uam.UamCompartido.JPA.Departamento;
 import com.uam.UamCompartido.JPA.Division;
 import com.uam.UamCompartido.JPA.Profesores;
@@ -25,15 +26,18 @@ public class AuthService {
 
     private final PasswordEncoder passwordEncoder;
     private final ProfesoresDAOImplementation profesoresDAO;
+    private final UsuariosDAOImplementation usuarioDAO;
     private final AuthenticationManager authenticationManager;
 
-    public AuthService(PasswordEncoder passwordEncoder, ProfesoresDAOImplementation profesoresDAO, AuthenticationManager authenticationManager) {
+    public AuthService(PasswordEncoder passwordEncoder, ProfesoresDAOImplementation profesoresDAO, UsuariosDAOImplementation usuarioDAO, AuthenticationManager authenticationManager) {
         this.passwordEncoder = passwordEncoder;
         this.profesoresDAO = profesoresDAO;
+        this.usuarioDAO = usuarioDAO;
         this.authenticationManager = authenticationManager;
     }
 
-    public Profesores signup(SignupProfesoresDTO input){
+    // Dar de alta profesores
+    public Profesores signupProfesores(SignupUserDTO input){
         Profesores profesor = new Profesores();
         profesor.setNoEconomico(input.getNoEconomico());
         profesor.setNombre(input.getNombre());
@@ -49,7 +53,10 @@ public class AuthService {
         return profesoresDAO.save(profesor);
     }
 
-    public Profesores authenticate(LoginProfesoresDTO input){
+    // Dar de alta alumnos
+
+
+    public Profesores authenticate(LoginUserDTO input){
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         input.getEmail(),

@@ -11,7 +11,7 @@ import java.util.List;
  * @author diego
  */
 @Entity
-public class Profesores implements UserDetails {
+public class Profesores extends Usuario {
 
     @Id
     @Column(name = "noeconomico")
@@ -37,12 +37,6 @@ public class Profesores implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "iddivision")
     private Division division;
-
-    @Column(name = "Password")
-    private String password;
-
-    @Column(name = "Email")
-    private String email;
 
     
     public Profesores(){
@@ -99,58 +93,11 @@ public class Profesores implements UserDetails {
         this.division = division;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Departamento getDepartamento() {
         return departamento;
     }
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    @Override
-    public String getUsername() {
-        return getEmail();
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
     }
 }

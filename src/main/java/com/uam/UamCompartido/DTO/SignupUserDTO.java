@@ -1,22 +1,25 @@
 package com.uam.UamCompartido.DTO;
 
-import com.uam.UamCompartido.JPA.Departamento;
-import com.uam.UamCompartido.JPA.Division;
-import com.uam.UamCompartido.JPA.Unidad;
-
 /**
  * @author diego
  */
-public class SignupProfesoresDTO {
+public class SignupUserDTO {
+    // Común
     private String email;
     private String password;
     private String nombre;
-    private String noEconomico;
     private String apellidoMaterno;
     private String apellidoPaterno;
     private int idUnidad;
-    private int idDepartamento;
     private int idDivision;
+
+    // Profesores
+    private String noEconomico;
+    private int idDepartamento;
+
+    // Alumnos
+    private String matricula;
+    private int carrera;
 
 
     public String getEmail() {
@@ -89,5 +92,21 @@ public class SignupProfesoresDTO {
 
     public void setIdDivision(int idDivision) {
         this.idDivision = idDivision;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public int getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(int carrera) {
+        this.carrera = carrera;
     }
 }

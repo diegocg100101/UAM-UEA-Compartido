@@ -3,7 +3,7 @@ package com.uam.UamCompartido.DTO;
 /**
  * @author diego
  */
-public class LoginProfesoresDTO {
+public class LoginUserDTO {
     private String email;
     private String password;
 
