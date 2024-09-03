@@ -6,6 +6,6 @@ import java.util.List;
 /**
  * @author diego
  */
-public interface DivisonDAO {
+public interface DivisionDAO {
     public List<Division> GetAll();
 }
