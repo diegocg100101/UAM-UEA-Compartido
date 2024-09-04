@@ -2,6 +2,7 @@ package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.JPA.Usuarios;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -9,6 +10,8 @@ import java.util.Optional;
  */
 public interface UsuariosDAO {
     public Optional<?> findByEmail(String email);
+
+    public List<Usuarios> getAll();
 
     public Usuarios save(Usuarios usuarios);
 }

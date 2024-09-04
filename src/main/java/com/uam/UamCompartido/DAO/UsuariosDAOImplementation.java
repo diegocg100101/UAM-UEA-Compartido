@@ -1,6 +1,7 @@
 package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.JPA.Profesores;
+import com.uam.UamCompartido.JPA.UEA;
 import com.uam.UamCompartido.JPA.Usuarios;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -33,6 +34,18 @@ public class UsuariosDAOImplementation implements UsuariosDAO{
             String ex = e.getLocalizedMessage();
         }
         return usuario = Optional.ofNullable(usuarios.get(0));
+    }
+
+    @Override
+    public List<Usuarios> getAll() {
+        List<Usuarios> usuarios = new ArrayList<>();
+        try {
+            TypedQuery<Usuarios> queryUsers = entityManager.createQuery("FROM Usuarios", Usuarios.class);
+            usuarios = queryUsers.getResultList();
+        } catch (Exception e){
+            String ex = e.getLocalizedMessage();
+        }
+        return usuarios;
     }
 
     @Override
