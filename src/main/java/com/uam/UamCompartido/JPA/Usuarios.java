@@ -21,6 +21,30 @@ public class Usuarios implements UserDetails {
     @Column(name = "Password")
     private String password;
 
+    @Column(name = "Clave")
+    private String clave;
+
+    @Column(name = "Tipo")
+    private String Tipo;
+
+    public Usuarios() {}
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String tipo) {
+        Tipo = tipo;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
     public String getUsername() {
         return email;
     }

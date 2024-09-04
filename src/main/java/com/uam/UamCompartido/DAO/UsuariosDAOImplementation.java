@@ -21,8 +21,6 @@ public class UsuariosDAOImplementation implements UsuariosDAO{
     @Autowired
     private EntityManager entityManager;
 
-
-
     @Override
     public Optional<Usuarios> findByEmail(String email) {
         List<Usuarios> usuarios = new ArrayList<>();

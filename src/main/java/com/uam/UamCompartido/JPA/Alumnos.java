@@ -1,9 +1,6 @@
 package com.uam.UamCompartido.JPA;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Alumnos {
@@ -21,15 +18,15 @@ public class Alumnos {
     private String ApellidoMaterno;
 
     @ManyToOne
-    @Column(name = "idunidad")
+    @JoinColumn(name = "idunidad")
     private Unidad unidad;
 
     @ManyToOne
-    @Column(name = "iddivision")
+    @JoinColumn(name = "iddivision")
     private Division division;
 
     @ManyToOne
-    @Column(name = "idcarrera")
+    @JoinColumn(name = "idcarrera")
     private Carrera carrera;
 
     public Alumnos() {
