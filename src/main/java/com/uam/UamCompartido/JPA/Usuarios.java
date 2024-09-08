@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import java.util.List;
 public class Usuarios implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "Email")
     private String email;
 
@@ -22,12 +25,18 @@ public class Usuarios implements UserDetails {
     private String password;
 
     @Column(name = "Clave")
-    private String clave;
+    private long clave;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuarios_id",referencedColumnName = "clave")
+    , inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id_role"))
+    private List<Roles> roles = new ArrayList<>();
 
     @Column(name = "Tipo")
     private String Tipo;
 
     public Usuarios() {}
+
 
     public String getTipo() {
         return Tipo;
@@ -37,12 +46,13 @@ public class Usuarios implements UserDetails {
         Tipo = tipo;
     }
 
-    public String getClave() {
+
+    public long getClave() {
         return clave;
     }
 
     public void setClave(String clave) {
-        this.clave = clave;
+        this.clave = Long.parseLong(clave);
     }
 
     public String getUsername() {

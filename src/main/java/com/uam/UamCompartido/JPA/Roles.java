@@ -1,9 +1,6 @@
 package com.uam.UamCompartido.JPA;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * @author diego
@@ -13,6 +10,8 @@ import jakarta.persistence.Id;
 public class Roles {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //nuevo tipo de id
+    @Column(name = "id_role")
     private long id;
 
     @Enumerated(EnumType.STRING)
