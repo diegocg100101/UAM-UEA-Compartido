@@ -16,8 +16,6 @@ import java.util.List;
 public class Usuarios implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "Email")
     private String email;
 
@@ -25,12 +23,7 @@ public class Usuarios implements UserDetails {
     private String password;
 
     @Column(name = "Clave")
-    private long clave;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuarios_id",referencedColumnName = "clave")
-    , inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id_role"))
-    private List<Roles> roles = new ArrayList<>();
+    private String clave;
 
     @Column(name = "Tipo")
     private String Tipo;
@@ -47,12 +40,12 @@ public class Usuarios implements UserDetails {
     }
 
 
-    public long getClave() {
+    public String getClave() {
         return clave;
     }
 
     public void setClave(String clave) {
-        this.clave = Long.parseLong(clave);
+        this.clave = clave;
     }
 
     public String getUsername() {
