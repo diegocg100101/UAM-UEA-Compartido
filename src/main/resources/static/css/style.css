@@ -7,3 +7,19 @@ body {
     background: -webkit-linear-gradient(to left, #ffc0cb, #800080);
     background: linear-gradient(to left, #ffc0cb, #800080);
 }
+
+/* El texto es blanco de forma predeterminada */
+.nav-link {
+    color: white;
+}
+
+/* Cuando el botón está en estado activo (clic o seleccionado), el texto será negro */
+.nav-link:focus,
+.nav-link.active {
+    color: black;
+}
+
+.nav-link:hover {
+    color: #e707e7;
+}
+
