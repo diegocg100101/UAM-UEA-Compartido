@@ -30,7 +30,7 @@ public class AuthController {
 
     @GetMapping("/signup")
     public String register(){
-        return "signupProfesores";
+        return "signup";
     }
 
     @PostMapping("/signup")
@@ -41,7 +41,7 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login(){
-        return "loginProfesores";
+        return "login";
     }
 
     @PostMapping("/login")
