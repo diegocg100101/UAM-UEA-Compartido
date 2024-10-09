@@ -2,11 +2,11 @@ package com.uam.UamCompartido.JPA;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 /**
  * @author diego
@@ -28,8 +28,22 @@ public class Usuarios implements UserDetails {
     @Column(name = "Tipo")
     private String Tipo;
 
-    public Usuarios() {}
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idrol")
+    private Roles Rol;
 
+    public Usuarios() {
+        this.Rol = new Roles();
+    }
+
+
+    public com.uam.UamCompartido.JPA.Roles getRol() {
+        return Rol;
+    }
+
+    public void setRol(com.uam.UamCompartido.JPA.Roles rol) {
+        Rol = rol;
+    }
 
     public String getTipo() {
         return Tipo;
@@ -67,7 +81,7 @@ public class Usuarios implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return Collections.singletonList(new SimpleGrantedAuthority(Rol.getNombre()));
     }
 
     @Override

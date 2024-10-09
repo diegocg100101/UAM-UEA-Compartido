@@ -35,11 +35,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
+                        .requestMatchers("/user/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
         )
                 .httpBasic(withDefaults());
         http.csrf(AbstractHttpConfigurer::disable);
+        http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .authenticationProvider(authenticationProvider)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();
     }
 

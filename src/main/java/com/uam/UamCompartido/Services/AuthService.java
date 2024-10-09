@@ -7,7 +7,6 @@ import com.uam.UamCompartido.DTO.LoginUserDTO;
 import com.uam.UamCompartido.DTO.SignupUserDTO;
 import com.uam.UamCompartido.JPA.*;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -73,6 +72,7 @@ public class AuthService {
             alumno.setUnidad(entityManager.find(Unidad.class, input.getIdUnidad()));
             alumnosDAOImplementation.save(alumno);
 
+            usuarios.setRol(entityManager.find(Roles.class, 1));
             usuarios.setClave(input.getMatricula());
             usuarios.setTipo("alumno");
         } else if(input.getMatricula() == null) {
@@ -86,6 +86,7 @@ public class AuthService {
             profesor.setDivision(entityManager.find(Division.class, input.getIdDivision()));
             profesoresDAOImplementation.save(profesor);
 
+            usuarios.setRol(entityManager.find(Roles.class, 1));
             usuarios.setClave(input.getNoEconomico());
             usuarios.setTipo("profesor");
         }

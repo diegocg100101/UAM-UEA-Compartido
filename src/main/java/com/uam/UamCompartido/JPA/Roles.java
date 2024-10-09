@@ -10,26 +10,26 @@ import jakarta.persistence.*;
 public class Roles {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //nuevo tipo de id
-    @Column(name = "id_role")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idrol")
+    private int idRol;
 
-    @Enumerated(EnumType.STRING)
-    private RoleName name;
+    @Column(name = "nombre")
+    private String nombre;
 
-    public long getId() {
-        return id;
+    public long getIdRol() {
+        return idRol;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdRol(int id) {
+        this.idRol = id;
     }
 
-    public RoleName getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(RoleName name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

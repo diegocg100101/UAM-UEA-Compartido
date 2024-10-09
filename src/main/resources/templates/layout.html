@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:fragment="header">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
+                <li sec:authorize="hasRole('ADMIN')"  class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         UEAs
                     </a>
@@ -43,19 +43,15 @@
                         <li><a class="dropdown-item" href="/UEA/ListadoUEA">Búsqueda</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/AcercaDe">Acerca de</a>
-                </li>
-
                 <li class="ms-2 nav-item btn btn-outline-success btn-sm">
                     <a class="nav-link text-white" href="/auth/login">Ingresar</a>
                 </li>
-
                 <li class="ms-2 nav-item btn btn-outline-warning btn-sm">
                     <a class="nav-link text-white" href="/auth/signup">Registrar</a>
                 </li>
-
-
+                <li class="ms-2 mt-1 nav-item">
+                    <a class="nav-link text-white" href="/AcercaDe">Acerca de</a>
+                </li>
             </ul>
         </div>
     </div>

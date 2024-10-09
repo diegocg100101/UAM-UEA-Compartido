@@ -83,13 +83,13 @@ public class UEAController {
     public String AddUEA(Model model){
 
         UEA uea = new UEA();
-        List<Unidad>unidades = unidadDAOImplementation.GetAll();
+        List<Unidad> unidades = unidadDAOImplementation.GetAll();
         model.addAttribute("unidades",unidades);
 
-        List<Tronco>troncos = troncoDAOImplementation.GetAll();
+        List<Tronco> troncos = troncoDAOImplementation.GetAll();
         model.addAttribute("troncos",troncos);
 
-        List<Trimestre>trimestres = trimestreDAOImplementation.GetAll();
+        List<Trimestre> trimestres = trimestreDAOImplementation.GetAll();
         model.addAttribute("trimestres",trimestres);
 
         model.addAttribute("uea",uea);
