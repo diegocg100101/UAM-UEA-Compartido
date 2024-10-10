@@ -67,7 +67,7 @@ public class AuthService {
             alumno.setNombre(input.getNombre());
             alumno.setApellidoPaterno(input.getApellidoPaterno());
             alumno.setApellidoMaterno(input.getApellidoMaterno());
-            alumno.setCarrera(entityManager.find(Carrera.class, input.getCarrera()));
+            alumno.setCarrera(entityManager.find(Carrera.class, input.getIdCarrera()));
             alumno.setDivision(entityManager.find(Division.class, input.getIdDivision()));
             alumno.setUnidad(entityManager.find(Unidad.class, input.getIdUnidad()));
             alumnosDAOImplementation.save(alumno);

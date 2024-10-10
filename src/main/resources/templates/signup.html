@@ -34,12 +34,11 @@
                 <div class="tab-content">
                     <!-- Formulario profesores -->
                     <div class="tab-pane fade show active container ml-5 mr-5 mb-3" id="profesor" role="tabpanel" aria-labelledby="home-tab">
-                        <form>
-
+                        <form th:object="${user}" method="post" th:accion="@{/signup}" >
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="noeconomico">Número económico:</label>
-                                    <input type="text" class="form-control" id="noeconomico"
+                                    <input th:field="*{noEconomico}" type="text" class="form-control" id="noeconomico"
                                            placeholder="Ingresa tu número económico">
                                 </div>
                             </div>
@@ -49,17 +48,17 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre"
+                                    <input th:field="*{nombre}" type="text" class="form-control" id="nombre"
                                            placeholder="Ingresa tu nombre">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="apellidopaterno">Apellido paterno:</label>
-                                    <input type="text" class="form-control" id="apellidopaterno"
+                                    <input th:field="*{apellidoPaterno}" type="text" class="form-control" id="apellidopaterno"
                                            placeholder="Ingresa tu apellido paterno">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="apellidomaterno">Apellido materno:</label>
-                                    <input type="text" class="form-control" id="apellidomaterno"
+                                    <input th:field="*{apellidoMaterno}" type="text" class="form-control" id="apellidomaterno"
                                            placeholder="Ingresa tu apellido materno">
                                 </div>
                             </div>
@@ -69,27 +68,36 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label>Unidad:</label>
-                                    <select id="unidad" class="form-select">
-                                        <option value="" disabled selected>Selecciona una unidad</option>
-                                        <!-- Itera sobre la lista de 'unidades' y crea opciones -->
-                                        <option th:each="unidad : ${unidades}" th:text="${unidad.nombre}"></option>
+                                    <select id="unidad" class="form-select" th:field="*{idUnidad}">
+                                        <option value=0>Selecciona una unidad</option>
+                                        <option
+                                                th:each="unidad : ${unidades}"
+                                                th:value="${unidad.idUnidad}"
+                                                th:text="${unidad.nombre}"
+                                        ></option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>División:</label>
-                                    <select id="division" class="form-select">
-                                        <option value="" disabled selected>Selecciona una división</option>
-                                        <!-- Itera sobre la lista de 'unidades' y crea opciones -->
-                                        <option th:each="division : ${divisiones}" th:text="${division.nombre}"></option>
+                                    <select id="division" class="form-select" th:field="*{idDivision}">
+                                        <option value="0">Selecciona una división</option>
+                                        <option
+                                                th:each="division : ${divisiones}"
+                                                th:value="${division.idDivision}"
+                                                th:text="${division.nombre}"
+                                        ></option>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>Departamento:</label>
-                                    <select id="departamento" class="form-select">
-                                        <option value="" disabled selected>Selecciona tu departamento</option>
-                                        <!-- Itera sobre la lista de 'unidades' y crea opciones -->
-                                        <option th:each="departamento : ${departamentos}" th:text="${departamento.nombre}"></option>
+                                    <select id="departamento" class="form-select" th:field="*{idDepartamento}">
+                                        <option value="0">Selecciona tu departamento</option>
+                                        <option
+                                                th:each="departamento : ${departamentos}"
+                                                th:value="${departamento.idDepartamento}"
+                                                th:text="${departamento.nombre}"
+                                        ></option>
                                     </select>
                                 </div>
                             </div>
@@ -99,12 +107,12 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="email">Correo:</label>
-                                    <input type="email" class="form-control" id="email"
+                                    <input th:field="*{email}" type="email" class="form-control" id="email"
                                            placeholder="Ingresa tu correo">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputPassword1">Contraseña:</label>
-                                    <input type="password" class="form-control" id="contrasena"
+                                    <input th:field="*{password}" type="password" class="form-control" id="contrasena"
                                            placeholder="Ingresa tu contraseña">
                                 </div>
                             </div>
@@ -118,12 +126,12 @@
 
                     <!--Formulario Alumnos-->
                     <div class="tab-pane fade container ml-5 mr-5 mb-3" id="alumno" role="tabpanel" aria-labelledby="home-tab">
-                        <form>
+                        <form th:object="${user}" method="post" th:accion="@{/signup}">
 
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="noeconomico">Matricula:</label>
-                                    <input type="text" class="form-control" id="matricula"
+                                    <label for="matricula">Matricula:</label>
+                                    <input th:field="*{matricula}" type="text" class="form-control" id="matricula"
                                            placeholder="Ingresa tu matrícula">
                                 </div>
                             </div>
@@ -133,17 +141,17 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre"
+                                    <input th:field="*{nombre}" type="text" class="form-control" id="nombre"
                                            placeholder="Ingresa tu nombre">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="apellidopaterno">Apellido paterno:</label>
-                                    <input type="text" class="form-control" id="apellidopaterno"
+                                    <input th:field="*{apellidoPaterno}" type="text" class="form-control" id="apellidopaterno"
                                            placeholder="Ingresa tu apellido paterno">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="apellidomaterno">Apellido materno:</label>
-                                    <input type="text" class="form-control" id="apellidomaterno"
+                                    <input th:field="*{apellidoMaterno}" type="text" class="form-control" id="apellidomaterno"
                                            placeholder="Ingresa tu apellido materno">
                                 </div>
                             </div>
@@ -153,26 +161,35 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label>Unidad:</label>
-                                    <select id="unidad" class="form-select">
-                                        <option value="" disabled selected>Selecciona una unidad</option>
-                                        <!-- Itera sobre la lista de 'unidades' y crea opciones -->
-                                        <option th:each="unidad : ${unidades}" th:text="${unidad.nombre}"></option>
+                                    <select id="unidad" class="form-select" th:field="*{idUnidad}">
+                                        <option value="0">Selecciona una unidad</option>
+                                        <option
+                                                th:each="unidad : ${unidades}"
+                                                th:value="${unidad.idUnidad}"
+                                                th:text="${unidad.nombre}"
+                                        ></option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>División:</label>
-                                    <select id="division" class="form-select">
-                                        <option value="" disabled selected>Selecciona una división</option>
-                                        <!-- Itera sobre la lista de 'unidades' y crea opciones -->
-                                        <option th:each="division : ${divisiones}" th:text="${division.nombre}"></option>
+                                    <select id="division" class="form-select" th:field="*{idDivision}">
+                                        <option value="0">Selecciona una división</option>
+                                        <option
+                                                th:each="division : ${divisiones}"
+                                                th:value="${division.idDivision}"
+                                                th:text="${division.nombre}"
+                                        ></option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Carrera:</label>
-                                    <select id="carrera" class="form-select">
-                                        <option value="" disabled selected>Selecciona tu carrera</option>
-                                        <!-- Itera sobre la lista de 'unidades' y crea opciones -->
-                                        <option th:each="carrera : ${carreras}" th:text="${carrera.nombre}"></option>
+                                    <select id="carrera" class="form-select" th:field="*{idCarrera}">
+                                        <option value="0">Selecciona tu carrera</option>
+                                        <option
+                                                th:each="carrera : ${carreras}"
+                                                th:value="${carrera.idCarrera}"
+                                                th:text="${carrera.nombre}"
+                                        ></option>
                                     </select>
                                 </div>
                             </div>
@@ -182,12 +199,12 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="email">Correo:</label>
-                                    <input type="email" class="form-control" id="email"
+                                    <input th:field="*{email}" type="email" class="form-control" id="email"
                                            placeholder="Ingresa tu correo">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="exampleInputPassword1">Contraseña:</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
+                                    <input th:field="*{password}" type="password" class="form-control" id="exampleInputPassword1"
                                            placeholder="Ingresa tu contraseña">
                                 </div>
                             </div>

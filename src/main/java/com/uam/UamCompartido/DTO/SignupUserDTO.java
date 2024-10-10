@@ -19,7 +19,7 @@ public class SignupUserDTO {
 
     // Alumnos
     private String matricula;
-    private int carrera;
+    private int idCarrera;
 
 
     public String getEmail() {
@@ -102,11 +102,11 @@ public class SignupUserDTO {
         this.matricula = matricula;
     }
 
-    public int getCarrera() {
-        return carrera;
+    public int getIdCarrera() {
+        return idCarrera;
     }
 
-    public void setCarrera(int carrera) {
-        this.carrera = carrera;
+    public void setIdCarrera(int idCarrera) {
+        this.idCarrera = idCarrera;
     }
 }

@@ -65,9 +65,9 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> register(@RequestBody SignupUserDTO signupUserDTO){
+    public String register(@ModelAttribute("user") SignupUserDTO signupUserDTO){
         Usuarios usuariosRegistrado = authService.signup(signupUserDTO);
-        return ResponseEntity.ok(usuariosRegistrado);
+        return "redirect:/auth/signup";
     }
 
     @GetMapping("/login")
