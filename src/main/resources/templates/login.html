@@ -9,23 +9,24 @@
 <div th:insert="~{layout :: navbar}"> </div>
 
 <div id="login">
-    <h3 class="text-center text-white pt-5">Bienvenido</h3>
+    <br><br><br>
+    <h3 class="text-center text-white pt-5">¡Bienvenido!</h3>
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-12">
-                    <form id="login-form" class="form" th:accion="@{/login}" th:object="${userLogin}" method="post">
+                    <form id="loginUsuario" class="form">
                         <h3 class="text-center text-info">Profesor</h3>
                         <div class="form-group">
-                            <label for="nombre" class="text-info">Usuario:</label><br>
-                            <input placeholder="Ingresa tu correo" type="text" name="nombre" id="nombre" class="form-control" th:field="*{email}">
+                            <label for="email" class="text-info">Usuario:</label><br>
+                            <input placeholder="Ingresa tu correo" type="text" name="nombre" id="email" class="form-control">
                         </div>
 
                         <br>
 
                         <div class="form-group">
                             <label for="password" class="text-info">Contraseña:</label><br>
-                            <input placeholder="Ingresa tu contraseña" type="password" name="password" id="password" class="form-control" th:field="*{password}">
+                            <input placeholder="Ingresa tu contraseña" type="password" name="password" id="password" class="form-control">
                         </div>
                         <div class="form-group">
                             <br><input type="submit" name="ingresar" class="btn btn-info btn-md">
@@ -37,6 +38,23 @@
     </div>
 </div>
 
+<script>
+    document.getElementById('loginUsuario').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const request = await fetch('login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email, password}),
+        })
+
+        localStorage.token = await request.text();
+    });
+</script>
 
 </body>
 </html>

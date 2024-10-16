@@ -10,6 +10,7 @@ import com.uam.UamCompartido.JPA.*;
 import com.uam.UamCompartido.Responses.LoginResponse;
 import com.uam.UamCompartido.Services.AuthService;
 import com.uam.UamCompartido.Services.JwtService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -77,7 +78,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String authenticate(@ModelAttribute("userLogin") LoginUserDTO loginUserDTO, Model model){
+    public ResponseEntity<?> authenticate(@RequestBody LoginUserDTO loginUserDTO, Model model){
         Usuarios usuariosAutenticado = authService.authenticate(loginUserDTO);
         String jwtToken = jwtService.generateToken(usuariosAutenticado);
 
@@ -85,8 +86,7 @@ public class AuthController {
         loginResponse.setToken(jwtToken);
         loginResponse.setExpiresIn(jwtService.getExpirationTime());
 
-        model.addAttribute("token", jwtToken);
-        return "redirect:/";
+        return ResponseEntity.ok(loginResponse);
     }
 
 }
