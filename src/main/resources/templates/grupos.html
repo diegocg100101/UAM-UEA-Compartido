@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{layout :: header}" >
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div th:insert="~{layout :: navbar}"> </div>
+
+<div>
+        <p> Funciona esta escribiendo <span th:text="${nombre}"> </span> </p>
+</div>
+
+</body>
+</html>
