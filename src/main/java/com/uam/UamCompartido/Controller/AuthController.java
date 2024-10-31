@@ -80,7 +80,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticate(@RequestBody LoginUserDTO loginUserDTO, Model model, HttpServletResponse response){
+    public String authenticate(@ModelAttribute("userLogin") LoginUserDTO loginUserDTO, HttpServletResponse response){
         Usuarios usuariosAutenticado = authService.authenticate(loginUserDTO);
         String jwtToken = jwtService.generateToken(usuariosAutenticado);
 
@@ -89,12 +89,7 @@ public class AuthController {
         cookie.setSecure(true);
         cookie.setPath("/");
         response.addCookie(cookie);
-
-        LoginResponse loginResponse = new LoginResponse();
-        loginResponse.setToken(jwtToken);
-        loginResponse.setExpiresIn(jwtService.getExpirationTime());
-
-        return ResponseEntity.ok(loginResponse);
+        return "redirect:/";
     }
 
     @GetMapping("/logout")
