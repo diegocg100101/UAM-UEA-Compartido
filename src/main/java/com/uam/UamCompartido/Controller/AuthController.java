@@ -10,6 +10,8 @@ import com.uam.UamCompartido.JPA.*;
 import com.uam.UamCompartido.Responses.LoginResponse;
 import com.uam.UamCompartido.Services.AuthService;
 import com.uam.UamCompartido.Services.JwtService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -78,9 +80,15 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticate(@RequestBody LoginUserDTO loginUserDTO, Model model){
+    public ResponseEntity<?> authenticate(@RequestBody LoginUserDTO loginUserDTO, Model model, HttpServletResponse response){
         Usuarios usuariosAutenticado = authService.authenticate(loginUserDTO);
         String jwtToken = jwtService.generateToken(usuariosAutenticado);
+
+        Cookie cookie = new Cookie("jwt", jwtToken);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        response.addCookie(cookie);
 
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setToken(jwtToken);
@@ -89,4 +97,14 @@ public class AuthController {
         return ResponseEntity.ok(loginResponse);
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletResponse response){
+        Cookie cookie = new Cookie("jwt", null);
+        cookie.setMaxAge(0);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        return "redirect:/";
+    }
 }
