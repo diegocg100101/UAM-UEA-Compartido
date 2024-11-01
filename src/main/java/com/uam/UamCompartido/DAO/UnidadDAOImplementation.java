@@ -12,6 +12,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.lang.model.element.TypeElement;
+
 /**
  *
  * @author LGMX
@@ -25,11 +27,11 @@ public class UnidadDAOImplementation implements UnidadDAO{
     @Override
     public List<Unidad> GetAll() {
         List<Unidad> unidades = new ArrayList<>();
-        
+
         try {
             TypedQuery<Unidad> queryUnidad = entityManager.createQuery("FROM Unidad", Unidad.class);
             unidades = queryUnidad.getResultList();
-            
+
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();
         }

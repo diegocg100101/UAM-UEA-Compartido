@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface GruposDAO {
 
-    public void GrupoAdd();
+    public Grupos save(Grupos grupos);
 
     public Grupos GrupoGetByClave();
 

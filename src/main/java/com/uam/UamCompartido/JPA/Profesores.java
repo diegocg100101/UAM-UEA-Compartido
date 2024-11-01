@@ -1,11 +1,6 @@
 package com.uam.UamCompartido.JPA;
 
 import jakarta.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-import java.util.List;
 
 /**
  * @author diego
@@ -15,7 +10,7 @@ public class Profesores {
 
     @Id
     @Column(name = "noeconomico")
-    private String NoEconomico;
+    private String noEconomico;
 
     @Column(name = "nombre")
     private String Nombre;
@@ -46,11 +41,11 @@ public class Profesores {
     }
 
     public String getNoEconomico() {
-        return NoEconomico;
+        return noEconomico;
     }
 
     public void setNoEconomico(String noEconomico) {
-        NoEconomico = noEconomico;
+        this.noEconomico = noEconomico;
     }
 
     public String getNombre() {

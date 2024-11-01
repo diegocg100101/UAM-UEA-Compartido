@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{layout :: header}"></head>
+<body>
+<div th:insert="~{layout :: navbar}"></div>
+
+<div class="row justify-content-center mt-5">
+    <div class="container mt-5 col-lg-8 text-white">
+        <h2 class="text-center">Grupos en plataforma</h2>
+
+        <table class="table table-dark table-striped text-center">
+            <thead>
+            <tr>
+                <th scope="col">Clave Grupo</th>
+                <th scope="col">Clave UEA</th>
+                <th scope="col">Unidad</th>
+                <th scope="col">Horario</th>
+                <th scope="col">No económico</th>
+                <th scope="col">Cupo Unidad</th>
+                <th scope="col">Salón</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterar sobre la lista de grupos
+            <tr th:each="grupo : ${grupo}">
+                <td th:text="${grupo.clave_grupo}">Clave Grupo</td>
+                <td th:text="${grupo.uea.clave_uea}">Clave UEA</td>
+                <td th:text="${grupo.unidad.nombre}">Unidad</td>
+                <td th:text="${grupo.horario.hora}">Horario</td>
+                <td th:text="${grupo.no_economico.no_economico}">No económico</td>
+                <td th:text="${grupo.cupo_unidad}">Cupo Unidad</td>
+                <td th:text="${grupo.salon.nombre}">Salón</td>
+            </tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

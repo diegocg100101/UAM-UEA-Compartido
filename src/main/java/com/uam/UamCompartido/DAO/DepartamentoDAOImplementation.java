@@ -25,9 +25,8 @@ public class DepartamentoDAOImplementation implements DepartamentoDAO {
         List<Departamento> departamentos = new ArrayList<>();
 
         try {
-            TypedQuery<Departamento> queryDepartamento= entityManager.createQuery("FROM Departamento ", Departamento.class);
+            TypedQuery<Departamento> queryDepartamento = entityManager.createQuery("FROM Departamento ", Departamento.class);
             departamentos = queryDepartamento.getResultList();
-
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();
         }

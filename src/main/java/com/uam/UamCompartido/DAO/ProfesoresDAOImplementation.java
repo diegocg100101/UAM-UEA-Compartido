@@ -1,6 +1,7 @@
 package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.JPA.Profesores;
+import com.uam.UamCompartido.JPA.Tronco;
 import com.uam.UamCompartido.JPA.UEA;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -23,7 +24,14 @@ public class ProfesoresDAOImplementation implements ProfesoresDAO {
 
     @Override
     public List<Profesores> GetAll() {
-        return List.of();
+        List<Profesores> profesor = new ArrayList<>();
+        try {
+            TypedQuery<Profesores> queryProfesor = entityManager.createQuery("FROM Profesores", Profesores.class);
+            profesor = queryProfesor.getResultList();
+        }catch (Exception e){
+            String ex = e.getLocalizedMessage();
+        }
+        return profesor;
     }
 
     @Override

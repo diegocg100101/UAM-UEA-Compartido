@@ -26,7 +26,6 @@ public class DivisionDAOImplementation implements DivisionDAO {
         try {
             TypedQuery<Division> queryDivision = entityManager.createQuery("FROM Division", Division.class);
             divisiones = queryDivision.getResultList();
-
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();
         }

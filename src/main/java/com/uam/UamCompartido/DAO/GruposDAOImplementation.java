@@ -2,6 +2,7 @@ package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.JPA.Grupos;
 import com.uam.UamCompartido.JPA.UEA;
+import com.uam.UamCompartido.JPA.Unidad;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -16,13 +17,19 @@ import java.util.List;
 public class GruposDAOImplementation implements GruposDAO{
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private EntityManager entityManager;
 
 
     @Override
-    public void GrupoAdd() {
-        jdbcTemplate.execute("INSERT INTO grupos VALUES('123','510004',3,1,'255',10,45)");
-
+    @Transactional
+    public Grupos save(Grupos grupo) {
+         try {
+             entityManager.persist(grupo);
+         }catch (Exception e){
+             String ex = e.getLocalizedMessage();
+             System.out.println(ex);
+         }
+         return grupo;
     }
 
     @Override
@@ -32,7 +39,15 @@ public class GruposDAOImplementation implements GruposDAO{
 
     @Override
     public List<Grupos> GrupoGetAll() {
-        return List.of();
+        List<Grupos> grupos = new ArrayList<>();
+        try {
+            TypedQuery<Grupos> queryGrupos = entityManager.createQuery("FROM Grupos ", Grupos.class);
+            grupos = queryGrupos.getResultList();
+
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+        }
+        return grupos;
     }
 
     @Override
