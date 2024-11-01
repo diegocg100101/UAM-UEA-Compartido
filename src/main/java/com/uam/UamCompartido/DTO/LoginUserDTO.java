@@ -1,10 +1,15 @@
 package com.uam.UamCompartido.DTO;
 
+import jakarta.validation.constraints.NotNull;
+
 /**
  * @author diego
  */
+
 public class LoginUserDTO {
+
     private String email;
+
     private String password;
 
     public String getEmail() {
