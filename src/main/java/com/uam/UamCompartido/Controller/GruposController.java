@@ -1,16 +1,16 @@
 package com.uam.UamCompartido.Controller;
 
 import com.uam.UamCompartido.DAO.*;
+import com.uam.UamCompartido.Editor.HorarioEditor;
+import com.uam.UamCompartido.Editor.*;
 import com.uam.UamCompartido.JPA.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.GeneratedValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -81,15 +81,30 @@ public class GruposController {
         List<UEA> ueas = ueaDAOImplementation.GetAll();
         model.addAttribute("ueas", ueas);
 
-        model.addAttribute("grupo",grupo);
+        model.addAttribute("grupo", grupo);
 
         return "grupos";
     }
 
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Horario.class, new HorarioEditor());
+
+        //binder.registerCustomEditor(Profesores.class, profesoresEditor);
+        //binder.registerCustomEditor(Profesores.class, "no_economico", profesoresEditor);
+        //binder.registerCustomEditor(Profesores.class, new ProfesoresEditor());
+    }
+
     @PostMapping("/AgregarGrupos")
     public String AgregarGrupos(@ModelAttribute("grupo") Grupos grupo){
-        gruposDAOImplementation.save(grupo);
-        return "/Grupos/ListadoGrupos";
+        try {
+            gruposDAOImplementation.save(grupo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error"; // Puedes crear una vista para mostrar errores si prefieres
+        }
+        return "redirect:/Grupos/ListadoGrupos";
     }
 
 

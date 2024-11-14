@@ -8,14 +8,13 @@ import com.uam.UamCompartido.DAO.TrimestreDAOImplementation;
 import com.uam.UamCompartido.DAO.TroncoDAOImplementation;
 import com.uam.UamCompartido.DAO.UeaDAOImplementation;
 import com.uam.UamCompartido.DAO.UnidadDAOImplementation;
-import com.uam.UamCompartido.JPA.Trimestre;
-import com.uam.UamCompartido.JPA.Tronco;
-import com.uam.UamCompartido.JPA.UEA;
-import com.uam.UamCompartido.JPA.Unidad;
+import com.uam.UamCompartido.JPA.*;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 /**
