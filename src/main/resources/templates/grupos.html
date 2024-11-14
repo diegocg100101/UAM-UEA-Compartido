@@ -26,7 +26,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                                 <label for="clave_uea" class="form-label">Clave uea:</label>
-                                                                <select class="form-select" id="clave_uea" name="clave_uea" required th:field="*{uea}">
+                                                                <select class="form-select" id="clave_uea" name="clave_uea" required th:field="*{uea.clave}">
                                                                         <option value=0>Selecciona una unidad</option>
                                                                         <option
                                                                                 th:each="uea : ${ueas}"
@@ -45,7 +45,7 @@
                                                 <div class="row">
                                                         <div class="form-group col-md-4">
                                                                 <label for="unidad" class="form-label">Unidad</label>
-                                                                <select class="form-select" id="unidad" name="unidad" required th:field="*{unidad}">
+                                                                <select class="form-select" id="unidad" name="unidad" required th:field="*{Unidad.idUnidad}">
                                                                         <option value=0>Selecciona una unidad</option>
                                                                         <option
                                                                                 th:each="unidad : ${unidades}"
@@ -55,17 +55,17 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                                 <label for="Horario" class="form-label">Horario:</label>
-                                                                <select class="form-select" id="horario" name="horario" required th:field="*{horario}">
+                                                                <select class="form-select" id="horario" name="horario" required th:field="*{horario.id_horario}">
                                                                         <option value=0>Selecciona el horario</option>
                                                                         <option
                                                                                 th:each="horario : ${horarios}"
                                                                                 th:value="${horario.id_horario}"
-                                                                                th:text="${horario.dias}"></option>
+                                                                                th:text="${horario.id_horario}"></option>
                                                                 </select>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                                 <label for="profesores" class="form-label">No_economico:</label>
-                                                                <select class="form-select" id="profesores" name="profesores" required th:field="*{no_economico}">
+                                                                <select class="form-select" id="profesores" name="noEconomicoString" required th:field="*{no_economico}">
                                                                         <option value=0>Selecciona el profesor</option>
                                                                         <option
                                                                                 th:each="profesores : ${profesor}"
@@ -78,7 +78,7 @@
 
                                                         <div class="form-group col-md-4">
                                                                 <label for="salon">Salon:</label>
-                                                                <select class="form-select" id="salon" name="salon" required th:field="*{salon}">
+                                                                <select class="form-select" id="salon" name="salon" required th:field="*{salon.idSalon}">
                                                                         <option value=0> Selecciona el salon </option>
                                                                         <option
                                                                                 th:each="salon : ${salones}"
