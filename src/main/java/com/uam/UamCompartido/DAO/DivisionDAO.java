@@ -1,6 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Division;
+import com.uam.UamCompartido.Model.Division;
 import java.util.List;
 
 /**

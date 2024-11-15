@@ -1,15 +1,12 @@
 package com.uam.UamCompartido.Controller;
 
 import com.uam.UamCompartido.DAO.*;
-import com.uam.UamCompartido.Editor.HorarioEditor;
-import com.uam.UamCompartido.Editor.*;
-import com.uam.UamCompartido.JPA.*;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.GeneratedValue;
+import com.uam.UamCompartido.Model.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +14,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/Grupos")
 public class GruposController {
-
-    @Autowired
-    private EntityManager entityManager;
 
     @Autowired
     private GruposDAOImplementation gruposDAOImplementation;
@@ -38,11 +32,6 @@ public class GruposController {
 
     @Autowired
     private UeaDAOImplementation ueaDAOImplementation;
-
-    @GetMapping
-    public String grupos(Model model) {
-        return "grupos";
-    }
 
     @GetMapping("/ListadoGrupos")
     public String ListarGrupos(Model model) {
@@ -83,17 +72,7 @@ public class GruposController {
 
         model.addAttribute("grupo", grupo);
 
-        return "grupos";
-    }
-
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Horario.class, new HorarioEditor());
-
-        //binder.registerCustomEditor(Profesores.class, profesoresEditor);
-        //binder.registerCustomEditor(Profesores.class, "no_economico", profesoresEditor);
-        //binder.registerCustomEditor(Profesores.class, new ProfesoresEditor());
+        return "grupos2";
     }
 
     @PostMapping("/AgregarGrupos")
@@ -102,7 +81,7 @@ public class GruposController {
             gruposDAOImplementation.save(grupo);
         } catch (Exception e) {
             e.printStackTrace();
-            return "error"; // Puedes crear una vista para mostrar errores si prefieres
+            return "error";
         }
         return "redirect:/Grupos/ListadoGrupos";
     }

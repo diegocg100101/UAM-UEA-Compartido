@@ -1,6 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Salon;
+import com.uam.UamCompartido.Model.Salon;
 
 import java.util.List;
 

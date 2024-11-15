@@ -1,4 +1,4 @@
-package com.uam.UamCompartido.JPA;
+package com.uam.UamCompartido.Model;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -37,11 +37,11 @@ public class Usuarios implements UserDetails {
     }
 
 
-    public com.uam.UamCompartido.JPA.Roles getRol() {
+    public com.uam.UamCompartido.Model.Roles getRol() {
         return Rol;
     }
 
-    public void setRol(com.uam.UamCompartido.JPA.Roles rol) {
+    public void setRol(com.uam.UamCompartido.Model.Roles rol) {
         Rol = rol;
     }
 

@@ -1,7 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Division;
-import com.uam.UamCompartido.JPA.Unidad;
+import com.uam.UamCompartido.Model.Division;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;

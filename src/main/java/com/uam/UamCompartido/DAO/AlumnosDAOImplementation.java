@@ -1,6 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Alumnos;
+import com.uam.UamCompartido.Model.Alumnos;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

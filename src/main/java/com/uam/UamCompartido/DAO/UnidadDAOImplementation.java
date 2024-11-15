@@ -4,15 +4,13 @@
  */
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Unidad;
+import com.uam.UamCompartido.Model.Unidad;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import javax.lang.model.element.TypeElement;
 
 /**
  *

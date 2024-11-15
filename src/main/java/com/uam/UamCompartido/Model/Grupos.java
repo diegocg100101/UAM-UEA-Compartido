@@ -1,4 +1,4 @@
-package com.uam.UamCompartido.JPA;
+package com.uam.UamCompartido.Model;
 
 import jakarta.persistence.*;
 
@@ -6,11 +6,11 @@ import jakarta.persistence.*;
 public class Grupos {
 
     @Id
-    @Column(name = "clave_grupo")
-    private String clave_grupo;
+    @Column(name = "clave")
+    private String clave;
 
     @ManyToOne
-    @JoinColumn (name = "clave_uea")
+    @JoinColumn (name = "claveuea")
     private UEA uea;
 
     @ManyToOne
@@ -22,11 +22,11 @@ public class Grupos {
     private Horario horario;
 
     @ManyToOne
-    @JoinColumn(name = "no_economico")
-    private Profesores no_economico;
+    @JoinColumn(name = "noeconomico")
+    private Profesores noeconomico;
 
-    @Column (name = "cupo_unidad")
-    private String cupo_unidad;
+    @Column (name = "cupo")
+    private String cupo;
 
     @ManyToOne
     @JoinColumn(name = "salon")
@@ -38,16 +38,16 @@ public class Grupos {
         this.uea = new UEA();
         this.unidad = new Unidad();
         this.horario = new Horario();
-        this.no_economico = new Profesores();
+        this.noeconomico = new Profesores();
         this.salon = new Salon();
     }
 
-    public String getClave_grupo() {
-        return clave_grupo;
+    public String getClave() {
+        return clave;
     }
 
-    public void setClave_grupo(String clave_grupo) {
-        this.clave_grupo = clave_grupo;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public UEA getUea() {
@@ -74,20 +74,20 @@ public class Grupos {
         this.horario = horario;
     }
 
-    public Profesores getNo_economico() {
-        return no_economico;
+    public Profesores getNoeconomico() {
+        return noeconomico;
     }
 
-    public void setNo_economico(Profesores no_economico) {
-        this.no_economico = no_economico;
+    public void setNoeconomico(Profesores noeconomico) {
+        this.noeconomico = noeconomico;
     }
 
-    public String getCupo_unidad() {
-        return cupo_unidad;
+    public String getCupo() {
+        return cupo;
     }
 
-    public void setCupo_unidad(String cupo_unidad) {
-        this.cupo_unidad = cupo_unidad;
+    public void setCupo(String cupo) {
+        this.cupo = cupo;
     }
 
     public Salon getSalon() {

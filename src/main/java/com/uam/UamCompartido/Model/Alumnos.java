@@ -1,4 +1,4 @@
-package com.uam.UamCompartido.JPA;
+package com.uam.UamCompartido.Model;
 
 import jakarta.persistence.*;
 

@@ -4,7 +4,7 @@
  */
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Tronco;
+import com.uam.UamCompartido.Model.Tronco;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import java.util.ArrayList;

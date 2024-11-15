@@ -1,6 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Grupos;
+import com.uam.UamCompartido.Model.Grupos;
 
 import java.util.List;
 

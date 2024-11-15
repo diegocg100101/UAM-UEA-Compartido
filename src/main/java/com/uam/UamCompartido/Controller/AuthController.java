@@ -6,7 +6,7 @@ import com.uam.UamCompartido.DAO.DivisionDAOImplementation;
 import com.uam.UamCompartido.DAO.UnidadDAOImplementation;
 import com.uam.UamCompartido.DTO.LoginUserDTO;
 import com.uam.UamCompartido.DTO.SignupUserDTO;
-import com.uam.UamCompartido.JPA.*;
+import com.uam.UamCompartido.Model.*;
 import com.uam.UamCompartido.Services.AuthService;
 import com.uam.UamCompartido.Services.JwtService;
 import jakarta.servlet.http.Cookie;

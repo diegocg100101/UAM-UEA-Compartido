@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{layout :: header}" >
+</head>
+
+<body>
+<!-- Navbar -->
+<div th:insert="~{layout :: navbar}"></div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="container mt-5">
+            <div class="card text-bg-dark">
+                <div class="card-header text-center">
+                    <h1>¡Bienvenidos!</h1>
+                </div>
+
+                <div class="card-body">
+                    <form th:object="${grupo}" method="Post" th:accion="@{/Grupos/AgregarGrupos}">
+
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="clavegrupo" class="form-label">Clave Grupo:</label>
+                                <input th:field="*{clave}" type="text" class="form-control" id="clavegrupo" placeholder="Ingresa la clave" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="clave_uea" class="form-label">Clave uea:</label>
+                                <select class="form-select" id="clave_uea" name="clave_uea" required th:field="*{uea}">
+                                    <option value=0>Selecciona una unidad</option>
+                                    <option
+                                            th:each="uea : ${ueas}"
+                                            th:value="${uea.clave}"
+                                            th:text="${uea.clave}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="Cupo" class="form-label">Cupo_Unidad:</label>
+                                <input type="text" class="form-control" id="Cupo" placeholder="Ingresa el cupo " required th:field="*{cupo}">
+                            </div>
+                        </div>
+
+                        <br><br>
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="unidad" class="form-label">Unidad</label>
+                                <select class="form-select" id="unidad" name="unidad" required th:field="*{unidad}">
+                                    <option value=0>Selecciona una unidad</option>
+                                    <option
+                                            th:each="unidad : ${unidades}"
+                                            th:value="${unidad.idUnidad}"
+                                            th:text="${unidad.nombre}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="Horario" class="form-label">Horario:</label>
+                                <select class="form-select" id="horario" name="horario" required th:field="*{horario}">
+                                    <option value=0>Selecciona el horario</option>
+                                    <option
+                                            th:each="horario : ${horarios}"
+                                            th:value="${horario.id_horario}"
+                                            th:text="${horario.id_horario}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="profesores" class="form-label">No_economico:</label>
+                                <select class="form-select" id="profesores" name="noEconomicoString" required th:field="*{noeconomico}">
+                                    <option value=0>Selecciona el profesor</option>
+                                    <option
+                                            th:each="profesores : ${profesor}"
+                                            th:value="${profesores.noEconomico}"
+                                            th:text="${profesores.noEconomico}"></option>
+                                </select>
+                            </div>
+
+                            <br><br><br><br>
+
+                            <div class="form-group col-md-4">
+                                <label for="salon">Salon:</label>
+                                <select class="form-select" id="salon" name="salon" required th:field="*{salon}">
+                                    <option value=0> Selecciona el salon </option>
+                                    <option
+                                            th:each="salon : ${salones}"
+                                            th:value ="${salon.idSalon}"
+                                            th:text="${salon.nombre}"></option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <br><br>
+
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Horario;
+import com.uam.UamCompartido.Model.Horario;
 
 import java.util.List;
 

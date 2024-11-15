@@ -1,7 +1,7 @@
 package com.uam.UamCompartido.Services;
 
 import com.uam.UamCompartido.DAO.UsuariosDAOImplementation;
-import com.uam.UamCompartido.JPA.Usuarios;
+import com.uam.UamCompartido.Model.Usuarios;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

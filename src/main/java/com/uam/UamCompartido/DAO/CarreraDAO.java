@@ -1,6 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Carrera;
+import com.uam.UamCompartido.Model.Carrera;
 
 import java.util.List;
 

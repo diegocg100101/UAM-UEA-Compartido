@@ -1,4 +1,4 @@
-package com.uam.UamCompartido.JPA;
+package com.uam.UamCompartido.Model;
 
 import jakarta.persistence.*;
 
@@ -72,11 +72,11 @@ public class Profesores {
         ApellidoMaterno = apellidoMaterno;
     }
 
-    public com.uam.UamCompartido.JPA.Unidad getUnidad() {
+    public com.uam.UamCompartido.Model.Unidad getUnidad() {
         return Unidad;
     }
 
-    public void setUnidad(com.uam.UamCompartido.JPA.Unidad unidad) {
+    public void setUnidad(com.uam.UamCompartido.Model.Unidad unidad) {
         Unidad = unidad;
     }
 

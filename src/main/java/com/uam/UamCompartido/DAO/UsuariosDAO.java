@@ -1,6 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Usuarios;
+import com.uam.UamCompartido.Model.Usuarios;
 
 import java.util.List;
 import java.util.Optional;

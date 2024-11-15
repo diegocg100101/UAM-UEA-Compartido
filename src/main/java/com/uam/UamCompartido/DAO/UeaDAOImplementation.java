@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.uam.UamCompartido.JPA.UEA;
+import com.uam.UamCompartido.Model.UEA;
 import jakarta.transaction.Transactional;
 
 /**

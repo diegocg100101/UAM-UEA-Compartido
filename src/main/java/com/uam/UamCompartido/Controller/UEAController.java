@@ -8,13 +8,12 @@ import com.uam.UamCompartido.DAO.TrimestreDAOImplementation;
 import com.uam.UamCompartido.DAO.TroncoDAOImplementation;
 import com.uam.UamCompartido.DAO.UeaDAOImplementation;
 import com.uam.UamCompartido.DAO.UnidadDAOImplementation;
-import com.uam.UamCompartido.JPA.*;
+import com.uam.UamCompartido.Model.*;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -91,7 +90,7 @@ public class UEAController {
         List<Trimestre> trimestres = trimestreDAOImplementation.GetAll();
         model.addAttribute("trimestres",trimestres);
 
-        model.addAttribute("uea",uea);
+        model.addAttribute("uea", uea);
 
         return "formUEA";
     }

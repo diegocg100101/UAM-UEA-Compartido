@@ -1,8 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Profesores;
-import com.uam.UamCompartido.JPA.Tronco;
-import com.uam.UamCompartido.JPA.UEA;
+import com.uam.UamCompartido.Model.Profesores;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;

@@ -1,4 +1,4 @@
-package com.uam.UamCompartido.JPA;
+package com.uam.UamCompartido.Model;
 
 import jakarta.persistence.*;
 
@@ -7,22 +7,20 @@ import jakarta.persistence.*;
  */
 
 @Entity
-public class Roles {
-
+public class Division {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idrol")
-    private int idRol;
+    @Column(name = "iddivision")
+    private int idDivision;
 
     @Column(name = "nombre")
     private String nombre;
 
-    public long getIdRol() {
-        return idRol;
+    public int getIdDivision() {
+        return idDivision;
     }
 
-    public void setIdRol(int id) {
-        this.idRol = id;
+    public void setIdDivision(int idDivision) {
+        this.idDivision = idDivision;
     }
 
     public String getNombre() {

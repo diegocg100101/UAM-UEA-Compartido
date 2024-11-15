@@ -4,7 +4,7 @@
  */
 package com.uam.UamCompartido.DAO;
 
-import com.uam.UamCompartido.JPA.Unidad;
+import com.uam.UamCompartido.Model.Unidad;
 import java.util.List;
 
 /**
