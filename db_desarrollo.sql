@@ -93,28 +93,28 @@ CREATE TABLE ROLES(
 ALTER TABLE USUARIOS ADD FOREIGN KEY (IdRol) REFERENCES ROLES (IdRol);
 
 CREATE TABLE GRUPOS(
-                       clave_grupo varchar2(10) PRIMARY KEY ,
-                       clave_uea varchar2(10),
-                       unidad number,
-                       horario number,
-                       no_economico varchar2(10),
-                       cupo_unidad NUMBER,
-                       salon NUMBER
+                       ClaveGrupo VARCHAR2(10) PRIMARY KEY ,
+                       ClaveUea VARCHAR2(10),
+                       Unidad NUMERIC,
+                       Horario NUMERIC,
+                       NoEconomico VARCHAR2(10),
+                       CupoUnidad NUMERIC,
+                       Salon NUMERIC
 
 );
 
 CREATE TABLE SALON(
-                      id_salon number primary key ,
-                      nombre varchar2(10),
-                      cupo number,
-                      ubicacion varchar2(20)
+                      IdSalon NUMERIC primary key ,
+                      Nombre VARCHAR2(10),
+                      Cupo NUMERIC,
+                      Ubicacion VARCHAR2(20)
 );
 
 CREATE TABLE HORARIO(
-                        id_horario number primary key ,
-                        hora_inicio varchar2(20),
-                        hora_termino varchar2(20),
-                        dias varchar2(30)
+                        IdHorario NUMERIC primary key ,
+                        HoraInicio VARCHAR2(20),
+                        HoraTermino VARCHAR2(20),
+                        Dias VARCHAR2(30)
 );
 
 ALTER TABLE GRUPOS ADD FOREIGN KEY (CLAVE_UEA) REFERENCES UEA (CLAVE);

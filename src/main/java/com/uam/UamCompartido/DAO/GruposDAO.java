@@ -15,7 +15,6 @@ public interface GruposDAO {
     public void GrupoDelete();
 
     public void GrupoUpdate();
-
 }
 
 
