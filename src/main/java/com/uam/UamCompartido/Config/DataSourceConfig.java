@@ -20,10 +20,10 @@ public class DataSourceConfig {
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:ORCL");
-        dataSource.setUsername("db_desarrollo");
+        dataSource.setUrl("jdbc:mariadb://localhost:3306");
+        dataSource.setUsername("root");
         dataSource.setPassword("186251");
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
         return dataSource;    
     }
     
