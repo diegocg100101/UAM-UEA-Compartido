@@ -82,6 +82,7 @@ CREATE TABLE USUARIOS(
     Email VARCHAR2(20) PRIMARY KEY,
     Password VARCHAR2(100),
     Clave VARCHAR2(100),
+    Tipo VARCHAR2(100),
     IdRol NUMERIC
 );
 

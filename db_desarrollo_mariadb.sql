@@ -8,30 +8,30 @@ CREATE TABLE UEA
     IdTrimestre INT
 );
 
-CREATE TABLE Unidad
+CREATE TABLE UNIDAD
 (
     IdUnidad INT PRIMARY KEY,
     Nombre   VARCHAR(10)
 );
 
-CREATE TABLE Tronco
+CREATE TABLE TRONCO
 (
     IdTronco INT PRIMARY KEY,
     Nombre   VARCHAR(30)
 );
 
-CREATE TABLE Trimestre
+CREATE TABLE TRIMESTRE
 (
     IdTrimestre INT PRIMARY KEY,
     Nombre      VARCHAR(10)
 );
 
 ALTER TABLE UEA
-    ADD FOREIGN KEY (IdUnidad) REFERENCES Unidad (IdUnidad);
+    ADD FOREIGN KEY (IdUnidad) REFERENCES UNIDAD (IdUnidad);
 ALTER TABLE UEA
-    ADD FOREIGN KEY (IdTrimestre) REFERENCES Trimestre (IdTrimestre);
+    ADD FOREIGN KEY (IdTrimestre) REFERENCES TRIMESTRE (IdTrimestre);
 ALTER TABLE UEA
-    ADD FOREIGN KEY (IdTronco) REFERENCES Tronco (IdTronco);
+    ADD FOREIGN KEY (IdTronco) REFERENCES TRONCO (IdTronco);
 
 CREATE TABLE PROFESORES(
                            NoEconomico VARCHAR(10) PRIMARY KEY,
