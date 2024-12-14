@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
  * @author LGMX
  */
 
-@Entity
+@Entity(name = "tronco")
 public class Tronco {
     
     @Column(name="idtronco")

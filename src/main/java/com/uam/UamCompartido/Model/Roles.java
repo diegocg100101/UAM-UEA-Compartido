@@ -6,7 +6,7 @@ import jakarta.persistence.*;
  * @author diego
  */
 
-@Entity
+@Entity(name = "roles")
 public class Roles {
 
     @Id

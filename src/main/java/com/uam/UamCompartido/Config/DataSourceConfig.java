@@ -20,8 +20,8 @@ public class DataSourceConfig {
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mariadb://localhost:3306");
-        dataSource.setUsername("root");
+        dataSource.setUrl("jdbc:mariadb://localhost:3306/uam_compartido");
+        dataSource.setUsername("desarrollo");
         dataSource.setPassword("186251");
         dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
         return dataSource;    
