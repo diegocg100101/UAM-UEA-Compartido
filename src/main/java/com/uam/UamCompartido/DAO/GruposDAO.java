@@ -14,5 +14,5 @@ public interface GruposDAO {
 
     public void Delete(Grupos grupo);
 
-    public List<Grupos> findAll();
+    public List<Grupos> GetAll();
 }
