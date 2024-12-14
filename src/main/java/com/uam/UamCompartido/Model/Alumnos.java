@@ -2,7 +2,7 @@ package com.uam.UamCompartido.Model;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "alumnos")
 public class Alumnos {
     @Id
     @Column(name = "matricula")

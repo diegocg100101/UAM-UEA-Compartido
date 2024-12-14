@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 /**
  * @author diego
  */
-@Entity
+@Entity(name = "profesores")
 public class Profesores {
 
     @Id

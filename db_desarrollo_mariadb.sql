@@ -1,4 +1,4 @@
-CREATE TABLE UEA
+CREATE TABLE uea
 (
     Clave       VARCHAR(10) PRIMARY KEY,
     Nombre      VARCHAR(50),
@@ -8,32 +8,33 @@ CREATE TABLE UEA
     IdTrimestre INT
 );
 
-CREATE TABLE UNIDAD
+CREATE TABLE unidad
 (
     IdUnidad INT PRIMARY KEY,
-    Nombre   VARCHAR(10)
+    Nombre   VARCHAR(100)
 );
 
-CREATE TABLE TRONCO
+CREATE TABLE tronco
 (
     IdTronco INT PRIMARY KEY,
-    Nombre   VARCHAR(30)
+    Nombre   VARCHAR(100)
 );
 
-CREATE TABLE TRIMESTRE
+CREATE TABLE trimestre
 (
     IdTrimestre INT PRIMARY KEY,
     Nombre      VARCHAR(10)
 );
 
-ALTER TABLE UEA
-    ADD FOREIGN KEY (IdUnidad) REFERENCES UNIDAD (IdUnidad);
-ALTER TABLE UEA
-    ADD FOREIGN KEY (IdTrimestre) REFERENCES TRIMESTRE (IdTrimestre);
-ALTER TABLE UEA
-    ADD FOREIGN KEY (IdTronco) REFERENCES TRONCO (IdTronco);
+ALTER TABLE uea
+    ADD FOREIGN KEY (IdUnidad) REFERENCES unidad (IdUnidad);
+ALTER TABLE uea
+    ADD FOREIGN KEY (IdTrimestre) REFERENCES trimestre (IdTrimestre);
+ALTER TABLE uea
+    ADD FOREIGN KEY (IdTronco) REFERENCES tronco (IdTronco);
 
-CREATE TABLE PROFESORES(
+CREATE TABLE profesores
+(
                            NoEconomico VARCHAR(10) PRIMARY KEY,
                            Nombre VARCHAR(20),
                            ApellidoPaterno VARCHAR(20),
@@ -45,21 +46,24 @@ CREATE TABLE PROFESORES(
                            Password VARCHAR(100)
 );
 
-CREATE TABLE DEPARTAMENTO(
+CREATE TABLE departamento
+(
                              IdDepartamento INT PRIMARY KEY,
-                             Nombre VARCHAR(20)
+                             Nombre VARCHAR(100)
 );
 
-CREATE TABLE DIVISION(
+CREATE TABLE division
+(
                          IdDivision INT PRIMARY KEY,
                          Nombre VARCHAR(20)
 );
 
-ALTER TABLE PROFESORES ADD FOREIGN KEY (IdUnidad) REFERENCES UNIDAD (IDUNIDAD);
-ALTER TABLE PROFESORES ADD FOREIGN KEY (IdDepartamento) REFERENCES DEPARTAMENTO (IdDepartamento);
-ALTER TABLE PROFESORES ADD FOREIGN KEY (IdDivision) REFERENCES DIVISION (IdDivision);
+ALTER TABLE profesores ADD FOREIGN KEY (IdUnidad) REFERENCES unidad (IDUNIDAD);
+ALTER TABLE profesores ADD FOREIGN KEY (IdDepartamento) REFERENCES departamento (IdDepartamento);
+ALTER TABLE profesores ADD FOREIGN KEY (IdDivision) REFERENCES division (IdDivision);
 
-CREATE TABLE ALUMNOS(
+CREATE TABLE alumnos
+(
                         Matricula VARCHAR(20) PRIMARY KEY,
                         Nombre VARCHAR(20),
                         ApellidoPaterno VARCHAR(20),
@@ -69,16 +73,18 @@ CREATE TABLE ALUMNOS(
                         IdCarrera INT
 );
 
-CREATE TABLE CARRERA(
+CREATE TABLE carrera
+(
                         IdCarrera INT PRIMARY KEY,
                         Nombre VARCHAR(50)
 );
 
-ALTER TABLE ALUMNOS ADD FOREIGN KEY (IdCarrera) REFERENCES CARRERA (IdCarrera);
-ALTER TABLE ALUMNOS ADD FOREIGN KEY (IdDivision) REFERENCES DIVISION (IdDivision);
-ALTER TABLE ALUMNOS ADD FOREIGN KEY (IdUnidad) REFERENCES UNIDAD (IdUnidad);
+ALTER TABLE alumnos ADD FOREIGN KEY (IdCarrera) REFERENCES carrera (IdCarrera);
+ALTER TABLE alumnos ADD FOREIGN KEY (IdDivision) REFERENCES division (IdDivision);
+ALTER TABLE alumnos ADD FOREIGN KEY (IdUnidad) REFERENCES unidad (IdUnidad);
 
-CREATE TABLE USUARIOS(
+CREATE TABLE usuarios
+(
                          Email VARCHAR(20) PRIMARY KEY,
                          Password VARCHAR(100),
                          Clave VARCHAR(100),
@@ -86,14 +92,16 @@ CREATE TABLE USUARIOS(
                          IdRol INT
 );
 
-CREATE TABLE ROLES(
+CREATE TABLE roles
+(
                       IdRol INT PRIMARY KEY,
                       Nombre VARCHAR(100)
 );
 
-ALTER TABLE USUARIOS ADD FOREIGN KEY (IdRol) REFERENCES ROLES (IdRol);
+ALTER TABLE usuarios ADD FOREIGN KEY (IdRol) REFERENCES roles (IdRol);
 
-CREATE TABLE GRUPOS(
+CREATE TABLE grupos
+(
                        ClaveGrupo VARCHAR(10) PRIMARY KEY ,
                        ClaveUea VARCHAR(10),
                        Unidad INT,
@@ -104,22 +112,59 @@ CREATE TABLE GRUPOS(
 
 );
 
-CREATE TABLE SALON(
+CREATE TABLE salon
+(
                       IdSalon INT PRIMARY KEY ,
                       Nombre VARCHAR(10),
                       Cupo INT,
                       Ubicacion VARCHAR(20)
 );
 
-CREATE TABLE HORARIO(
+CREATE TABLE horario(
                         IdHorario INT PRIMARY KEY ,
                         HoraInicio VARCHAR(20),
                         HoraTermino VARCHAR(20),
                         Dias VARCHAR(30)
 );
 
-ALTER TABLE GRUPOS ADD FOREIGN KEY (ClaveUea) REFERENCES UEA (Clave);
-ALTER TABLE GRUPOS ADD FOREIGN KEY (Unidad) REFERENCES UNIDAD (IdUnidad);
-ALTER TABLE GRUPOS ADD FOREIGN KEY (Horario) REFERENCES HORARIO (IdHorario);
-ALTER TABLE GRUPOS ADD FOREIGN KEY (NoEconomico) REFERENCES PROFESORES(NoEconomico);
-ALTER TABLE GRUPOS ADD FOREIGN KEY (Salon) REFERENCES SALON(IdSalon);
+ALTER TABLE grupos ADD FOREIGN KEY (ClaveUea) REFERENCES uea (Clave);
+ALTER TABLE grupos ADD FOREIGN KEY (Unidad) REFERENCES unidad (IdUnidad);
+ALTER TABLE grupos ADD FOREIGN KEY (Horario) REFERENCES horario (IdHorario);
+ALTER TABLE grupos ADD FOREIGN KEY (NoEconomico) REFERENCES profesores (NoEconomico);
+ALTER TABLE grupos ADD FOREIGN KEY (Salon) REFERENCES salon (IdSalon);
+
+INSERT INTO roles VALUES (1, 'USER'), (2, 'ADMIN');
+
+INSERT INTO carrera VALUES (1, 'ICT'), (2, 'ISMI'), (3, 'IRH'),
+                           (4, 'PP'), (5, 'EyTD'), (6, 'AyCD'),
+                           (7, 'BA'), (8, 'PB'), (9, 'CyTA');
+
+INSERT INTO unidad VALUES (1, 'Lerma'), (2, 'Cuajimalpa'), (3, 'Azcapotzalco'),
+                          (4, 'Xochimilco'), (5, 'Iztapalapa'), (5, 'Iztapalapa'),
+                          (5, 'Iztapalapa');
+
+INSERT INTO trimestre VALUES (1, '1'), (2, '2'), (3, '3'),
+                             (4, '4'), (5, '5'), (6, '6'),
+                             (7, '7'), (8, '8'), (9, '9'),
+                             (10, '10'), (11, '11'), (12, '12');
+
+INSERT INTO division VALUES (1, 'CBI'), (2, 'CSH'), (3, 'CBS');
+
+INSERT INTO departamento VALUES (1, 'Recursos de la Tierra'),
+                                (2, 'Sistemas de Información y Comunicaciones'),
+                                (3, 'Procesos Productivos'),
+                                (4, 'Ciencias de la alimentación'),
+                                (5, 'Ciencias ambientales'),
+                                (6, 'Ciencias de la salud'),
+                                (7, 'Artes y humanidades'),
+                                (8, 'Estudios Culturales'),
+                                (9, 'Procesos Sociales');
+
+INSERT INTO tronco VALUES (1, 'Tronco General Divisional'), (2, 'Tronco Básico de Carrera'),
+                          (3, 'Tronco Interdivisional de Fromación Interdisciplinaria'),
+                          (4, 'Tronco Específico de Carrera'), (5, 'Tronco de Integración');
+
+
+
+
+

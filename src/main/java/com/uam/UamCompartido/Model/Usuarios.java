@@ -12,7 +12,7 @@ import java.util.Collections;
  * @author diego
  */
 
-@Entity
+@Entity(name = "usuarios")
 public class Usuarios implements UserDetails {
 
     @Id

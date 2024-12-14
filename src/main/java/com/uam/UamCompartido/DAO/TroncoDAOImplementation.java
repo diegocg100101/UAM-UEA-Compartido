@@ -26,7 +26,7 @@ public class TroncoDAOImplementation implements TroncoDAO{
     public List<Tronco> GetAll() {
         List<Tronco> troncos = new ArrayList<>();
         try {
-            TypedQuery<Tronco> queryTronco = entityManager.createQuery("FROM Tronco", Tronco.class);
+            TypedQuery<Tronco> queryTronco = entityManager.createQuery("FROM tronco", Tronco.class);
             troncos = queryTronco.getResultList();
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();

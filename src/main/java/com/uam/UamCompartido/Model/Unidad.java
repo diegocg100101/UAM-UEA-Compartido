@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
  * @author LGMX
  */
 
-@Entity
+@Entity(name = "unidad")
 public class Unidad {
     
     @Id

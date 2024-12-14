@@ -6,7 +6,7 @@ import jakarta.persistence.*;
  * @author diego
  */
 
-@Entity
+@Entity(name = "division")
 public class Division {
     @Id
     @Column(name = "iddivision")

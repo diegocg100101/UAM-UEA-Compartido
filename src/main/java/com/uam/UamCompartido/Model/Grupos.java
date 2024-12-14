@@ -2,15 +2,19 @@ package com.uam.UamCompartido.Model;
 
 import jakarta.persistence.*;
 
-@Entity
+/**
+ * @author diego
+ */
+
+@Entity(name = "grupos")
 public class Grupos {
 
     @Id
-    @Column(name = "clave")
-    private String clave;
+    @Column(name = "clavegrupo")
+    private String claveGrupo;
 
     @ManyToOne
-    @JoinColumn (name = "claveuea")
+    @JoinColumn(name = "claveuea")
     private UEA uea;
 
     @ManyToOne
@@ -23,31 +27,29 @@ public class Grupos {
 
     @ManyToOne
     @JoinColumn(name = "noeconomico")
-    private Profesores noeconomico;
+    private Profesores profesor;
 
-    @Column (name = "cupo")
-    private String cupo;
+    @Column(name = "cupounidad")
+    private int cupoUnidad;
 
     @ManyToOne
     @JoinColumn(name = "salon")
     private Salon salon;
 
-
     public Grupos() {
-
-        this.uea = new UEA();
         this.unidad = new Unidad();
         this.horario = new Horario();
-        this.noeconomico = new Profesores();
+        this.profesor = new Profesores();
         this.salon = new Salon();
+        this.uea = new UEA();
     }
 
-    public String getClave() {
-        return clave;
+    public String getClaveGrupo() {
+        return claveGrupo;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setClaveGrupo(String claveGrupo) {
+        this.claveGrupo = claveGrupo;
     }
 
     public UEA getUea() {
@@ -74,20 +76,20 @@ public class Grupos {
         this.horario = horario;
     }
 
-    public Profesores getNoeconomico() {
-        return noeconomico;
+    public Profesores getProfesor() {
+        return profesor;
     }
 
-    public void setNoeconomico(Profesores noeconomico) {
-        this.noeconomico = noeconomico;
+    public void setProfesor(Profesores profesor) {
+        this.profesor = profesor;
     }
 
-    public String getCupo() {
-        return cupo;
+    public int getCupoUnidad() {
+        return cupoUnidad;
     }
 
-    public void setCupo(String cupo) {
-        this.cupo = cupo;
+    public void setCupoUnidad(int cupoUnidad) {
+        this.cupoUnidad = cupoUnidad;
     }
 
     public Salon getSalon() {
@@ -98,7 +100,3 @@ public class Grupos {
         this.salon = salon;
     }
 }
-
-
-
-

@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
  * @author diego
  */
 
-@Entity
+@Entity(name = "departamento")
 public class Departamento {
     @Id
     @Column(name = "iddepartamento")

@@ -24,7 +24,7 @@ public class ProfesoresDAOImplementation implements ProfesoresDAO {
     public List<Profesores> GetAll() {
         List<Profesores> profesor = new ArrayList<>();
         try {
-            TypedQuery<Profesores> queryProfesor = entityManager.createQuery("FROM Profesores", Profesores.class);
+            TypedQuery<Profesores> queryProfesor = entityManager.createQuery("FROM profesores", Profesores.class);
             profesor = queryProfesor.getResultList();
         }catch (Exception e){
             String ex = e.getLocalizedMessage();

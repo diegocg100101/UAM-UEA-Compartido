@@ -14,7 +14,7 @@ import jakarta.persistence.ManyToOne;
  *
  * @author LGMX
  */
-@Entity
+@Entity(name = "uea")
 public class UEA {
 
     @Id

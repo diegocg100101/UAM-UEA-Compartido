@@ -27,7 +27,7 @@ public class UnidadDAOImplementation implements UnidadDAO{
         List<Unidad> unidades = new ArrayList<>();
 
         try {
-            TypedQuery<Unidad> queryUnidad = entityManager.createQuery("FROM Unidad", Unidad.class);
+            TypedQuery<Unidad> queryUnidad = entityManager.createQuery("FROM unidad", Unidad.class);
             unidades = queryUnidad.getResultList();
 
         } catch (Exception e) {

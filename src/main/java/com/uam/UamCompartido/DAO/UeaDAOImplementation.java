@@ -37,7 +37,7 @@ public class UeaDAOImplementation implements UeaDAO{
     public List<UEA> GetAll() {
         List<UEA> ueas = new ArrayList<>();
         try {
-            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM UEA", UEA.class);
+            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM uea", UEA.class);
             ueas=queryUEA.getResultList();
             
         } catch (Exception e) {

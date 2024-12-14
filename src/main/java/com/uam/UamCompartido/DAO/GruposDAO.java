@@ -4,18 +4,15 @@ import com.uam.UamCompartido.Model.Grupos;
 
 import java.util.List;
 
+/**
+ * @author diego
+ */
 public interface GruposDAO {
+    public void Save(Grupos grupo);
 
-    public Grupos save(Grupos grupos);
+    public void Update(Grupos grupo);
 
-    public Grupos GrupoGetByClave();
+    public void Delete(Grupos grupo);
 
-    public List<Grupos> GrupoGetAll();
-
-    public void GrupoDelete();
-
-    public void GrupoUpdate();
+    public List<Grupos> GetAll();
 }
-
-
-
