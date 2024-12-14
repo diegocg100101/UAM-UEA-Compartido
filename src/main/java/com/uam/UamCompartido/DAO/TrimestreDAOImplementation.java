@@ -26,7 +26,7 @@ public class TrimestreDAOImplementation implements TrimestreDAO {
     public List<Trimestre> GetAll() {
         List<Trimestre> trimestres = new ArrayList<>();
         try {
-            TypedQuery<Trimestre> queryTrimestres = entityManager.createQuery("FROM Trimestre", Trimestre.class);
+            TypedQuery<Trimestre> queryTrimestres = entityManager.createQuery("FROM trimestre", Trimestre.class);
             trimestres=queryTrimestres.getResultList();
         } catch (Exception e) {
             String ex=e.getLocalizedMessage();

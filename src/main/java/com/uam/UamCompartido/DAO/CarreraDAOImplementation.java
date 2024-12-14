@@ -20,7 +20,7 @@ public class CarreraDAOImplementation implements CarreraDAO {
         List<Carrera> carreras = new ArrayList<>();
 
         try {
-            TypedQuery<Carrera> queryCarrera = entityManager.createQuery("FROM Carrera ", Carrera.class);
+            TypedQuery<Carrera> queryCarrera = entityManager.createQuery("FROM carrera", Carrera.class);
             carreras  = queryCarrera.getResultList();
 
         } catch (Exception e) {

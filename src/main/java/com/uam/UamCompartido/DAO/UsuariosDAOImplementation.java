@@ -25,7 +25,7 @@ public class UsuariosDAOImplementation implements UsuariosDAO{
         List<Usuarios> usuarios = new ArrayList<>();
         Optional<Usuarios> usuario;
         try{
-            TypedQuery<Usuarios> queryUser = entityManager.createQuery("FROM Usuarios WHERE email = :email", Usuarios.class);
+            TypedQuery<Usuarios> queryUser = entityManager.createQuery("FROM usuarios WHERE email = :email", Usuarios.class);
             queryUser.setParameter("email", email);
             usuarios = queryUser.getResultList();
         } catch (Exception e) {

@@ -21,7 +21,7 @@ public class HorarioDAOImplementation implements HorarioDAO {
         List<Horario> horarios = new ArrayList<>();
 
         try {
-            TypedQuery<Horario> queryHorario = entityManager.createQuery("FROM Horario ", Horario.class);
+            TypedQuery<Horario> queryHorario = entityManager.createQuery("FROM horario", Horario.class);
             horarios = queryHorario.getResultList();
         }catch (Exception e){
             String ex = e.getMessage();

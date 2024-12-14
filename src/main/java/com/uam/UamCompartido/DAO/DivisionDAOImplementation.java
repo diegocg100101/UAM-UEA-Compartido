@@ -23,7 +23,7 @@ public class DivisionDAOImplementation implements DivisionDAO {
         List<Division> divisiones = new ArrayList<>();
 
         try {
-            TypedQuery<Division> queryDivision = entityManager.createQuery("FROM Division", Division.class);
+            TypedQuery<Division> queryDivision = entityManager.createQuery("FROM division", Division.class);
             divisiones = queryDivision.getResultList();
         } catch (Exception e) {
             String ex = e.getLocalizedMessage();

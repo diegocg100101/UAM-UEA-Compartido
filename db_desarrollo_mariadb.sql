@@ -11,13 +11,13 @@ CREATE TABLE uea
 CREATE TABLE unidad
 (
     IdUnidad INT PRIMARY KEY,
-    Nombre   VARCHAR(10)
+    Nombre   VARCHAR(100)
 );
 
 CREATE TABLE tronco
 (
     IdTronco INT PRIMARY KEY,
-    Nombre   VARCHAR(30)
+    Nombre   VARCHAR(100)
 );
 
 CREATE TABLE trimestre
@@ -49,7 +49,7 @@ CREATE TABLE profesores
 CREATE TABLE departamento
 (
                              IdDepartamento INT PRIMARY KEY,
-                             Nombre VARCHAR(20)
+                             Nombre VARCHAR(100)
 );
 
 CREATE TABLE division
@@ -132,3 +132,39 @@ ALTER TABLE grupos ADD FOREIGN KEY (Unidad) REFERENCES unidad (IdUnidad);
 ALTER TABLE grupos ADD FOREIGN KEY (Horario) REFERENCES horario (IdHorario);
 ALTER TABLE grupos ADD FOREIGN KEY (NoEconomico) REFERENCES profesores (NoEconomico);
 ALTER TABLE grupos ADD FOREIGN KEY (Salon) REFERENCES salon (IdSalon);
+
+INSERT INTO roles VALUES (1, 'USER'), (2, 'ADMIN');
+
+INSERT INTO carrera VALUES (1, 'ICT'), (2, 'ISMI'), (3, 'IRH'),
+                           (4, 'PP'), (5, 'EyTD'), (6, 'AyCD'),
+                           (7, 'BA'), (8, 'PB'), (9, 'CyTA');
+
+INSERT INTO unidad VALUES (1, 'Lerma'), (2, 'Cuajimalpa'), (3, 'Azcapotzalco'),
+                          (4, 'Xochimilco'), (5, 'Iztapalapa'), (5, 'Iztapalapa'),
+                          (5, 'Iztapalapa');
+
+INSERT INTO trimestre VALUES (1, '1'), (2, '2'), (3, '3'),
+                             (4, '4'), (5, '5'), (6, '6'),
+                             (7, '7'), (8, '8'), (9, '9'),
+                             (10, '10'), (11, '11'), (12, '12');
+
+INSERT INTO division VALUES (1, 'CBI'), (2, 'CSH'), (3, 'CBS');
+
+INSERT INTO departamento VALUES (1, 'Recursos de la Tierra'),
+                                (2, 'Sistemas de Información y Comunicaciones'),
+                                (3, 'Procesos Productivos'),
+                                (4, 'Ciencias de la alimentación'),
+                                (5, 'Ciencias ambientales'),
+                                (6, 'Ciencias de la salud'),
+                                (7, 'Artes y humanidades'),
+                                (8, 'Estudios Culturales'),
+                                (9, 'Procesos Sociales');
+
+INSERT INTO tronco VALUES (1, 'Tronco General Divisional'), (2, 'Tronco Básico de Carrera'),
+                          (3, 'Tronco Interdivisional de Fromación Interdisciplinaria'),
+                          (4, 'Tronco Específico de Carrera'), (5, 'Tronco de Integración');
+
+
+
+
+

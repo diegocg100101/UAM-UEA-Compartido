@@ -20,7 +20,7 @@ public class SalonDAOImplementation implements SalonDAO {
         List<Salon> salones = new ArrayList<Salon>();
 
         try {
-            TypedQuery<Salon> querySalon = entityManager.createQuery("FROM Salon", Salon.class);
+            TypedQuery<Salon> querySalon = entityManager.createQuery("FROM salon", Salon.class);
             salones = querySalon.getResultList();
         }catch (Exception e){
             String ex = e.getMessage();
