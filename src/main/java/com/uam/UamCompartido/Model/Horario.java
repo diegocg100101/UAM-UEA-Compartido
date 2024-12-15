@@ -8,13 +8,13 @@ import jakarta.persistence.Id;
 public class Horario {
 
     @Id
-    @Column(name = "id_horario")
+    @Column(name = "idhorario")
     private int id_horario;
 
-    @Column (name = "hora_inicio")
+    @Column (name = "horainicio")
     private String hora_inicio;
 
-    @Column (name = "hora_termino")
+    @Column (name = "horatermino")
     private String hora_termino;
 
     @Column (name = "dias")

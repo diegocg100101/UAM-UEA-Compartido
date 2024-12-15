@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface HorarioDAO {
     public List<Horario> GetAllHorario();
+
+    public Horario GetHorarioById(Integer id);
 }

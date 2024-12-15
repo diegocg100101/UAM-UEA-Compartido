@@ -21,16 +21,15 @@
             </tr>
             </thead>
             <tbody>
-            <!-- Iterar sobre la lista de grupos
-            <tr th:each="grupo : ${grupo}">
-                <td th:text="${grupo.clave_grupo}">Clave Grupo</td>
-                <td th:text="${grupo.uea.clave_uea}">Clave UEA</td>
+            <tr th:each="grupo : ${grupos}">
+                <td th:text="${grupo.claveGrupo}">Clave Grupo</td>
+                <td th:text="${grupo.uea.clave}">Clave UEA</td>
                 <td th:text="${grupo.unidad.nombre}">Unidad</td>
-                <td th:text="${grupo.horario.hora}">Horario</td>
-                <td th:text="${grupo.no_economico.no_economico}">No económico</td>
-                <td th:text="${grupo.cupo_unidad}">Cupo Unidad</td>
+                <td th:text="${grupo.horario.dias}">Horario</td>
+                <td th:text="${grupo.profesor.noEconomico}">No económico</td>
+                <td th:text="${grupo.cupoUnidad}">Cupo Unidad</td>
                 <td th:text="${grupo.salon.nombre}">Salón</td>
-            </tr>-->
+            </tr>
             </tbody>
         </table>
     </div>

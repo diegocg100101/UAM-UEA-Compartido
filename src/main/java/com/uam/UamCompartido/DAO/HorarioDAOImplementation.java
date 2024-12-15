@@ -1,6 +1,7 @@
 package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.Model.Horario;
+import com.uam.UamCompartido.Model.Profesores;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,16 @@ public class HorarioDAOImplementation implements HorarioDAO {
 
         }
         return horarios;
+    }
+
+    @Override
+    public Horario GetHorarioById(Integer id) {
+        Horario horario = new Horario();
+        try {
+            horario = entityManager.find(Horario.class, id);
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+        }
+        return horario;
     }
 }

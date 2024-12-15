@@ -13,26 +13,26 @@ public class Grupos {
     @Column(name = "clavegrupo")
     private String claveGrupo;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "claveuea")
     private UEA uea;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "unidad")
     private Unidad unidad;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "horario")
     private Horario horario;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "noeconomico")
     private Profesores profesor;
 
     @Column(name = "cupounidad")
     private int cupoUnidad;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "salon")
     private Salon salon;
 
