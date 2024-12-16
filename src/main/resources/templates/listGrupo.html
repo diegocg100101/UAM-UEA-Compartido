@@ -15,7 +15,7 @@
                 <th scope="col">Clave UEA</th>
                 <th scope="col">Unidad</th>
                 <th scope="col">Horario</th>
-                <th scope="col">No económico</th>
+                <th scope="col">Profesor</th>
                 <th scope="col">Cupo Unidad</th>
                 <th scope="col">Salón</th>
             </tr>
@@ -23,10 +23,10 @@
             <tbody>
             <tr th:each="grupo : ${grupos}">
                 <td th:text="${grupo.claveGrupo}">Clave Grupo</td>
-                <td th:text="${grupo.uea.clave}">Clave UEA</td>
+                <td th:text="${grupo.uea.clave + ' ' + grupo.uea.nombre}">Clave UEA</td>
                 <td th:text="${grupo.unidad.nombre}">Unidad</td>
                 <td th:text="${grupo.horario.dias}">Horario</td>
-                <td th:text="${grupo.profesor.noEconomico}">No económico</td>
+                <td th:text="${grupo.profesor.noEconomico + ' ' + grupo.profesor.nombre + ' ' + grupo.profesor.apellidoPaterno + ' ' + grupo.profesor.apellidoMaterno}">Profesor</td>
                 <td th:text="${grupo.cupoUnidad}">Cupo Unidad</td>
                 <td th:text="${grupo.salon.nombre}">Salón</td>
             </tr>
