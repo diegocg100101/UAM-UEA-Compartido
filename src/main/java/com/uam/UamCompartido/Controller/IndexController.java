@@ -27,6 +27,5 @@ public class IndexController {
     public String AcercaDe(Model model){
         return "acercade";
     }
-    
-    
+
 }

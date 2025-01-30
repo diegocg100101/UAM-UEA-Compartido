@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:fragment="header">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,25 +35,39 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li sec:authorize="hasRole('USER')"  class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        UEAs
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/UEA/AgregarUEA">Alta UEA</a></li>
-                        <li><a class="dropdown-item" href="/UEA/ListadoUEA">Búsqueda</a></li>
-                    </ul>
+
+                <li class="nav-item dropdown ms-5" sec:authorize="isAuthenticated()">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-lg btn-outline-info dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
+                            UEAs
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/UEA/AgregarUEA" sec:authorize="hasRole('USER')">Alta UEA</a></li>
+                            <li><a class="dropdown-item" href="/UEA/ListadoUEA">Búsqueda</a></li>
+                        </ul>
+                    </div>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="ms-2 nav-item btn btn-outline-info btn-sm">
-                    <a class="nav-link text-white" href="/grupos/add">Grupos</a>
+
+                <li class="nav-item dropdown ms-2" sec:authorize="isAuthenticated()">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-lg btn-outline-info dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
+                            Grupos
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/grupos/add" sec:authorize="hasRole('USER')">Alta de grupo</a></li>
+                            <li><a class="dropdown-item" href="/grupos/list">Lista de grupos</a></li>
+                        </ul>
+                    </div>
                 </li>
+
+                <!--sec:authorize="hasRole('USER')"-->
                 <li sec:authorize="!isAuthenticated()" class="ms-2 nav-item btn btn-outline-success btn-sm">
                     <a class="nav-link text-white" href="/auth/login">Ingresar</a>
                 </li>
-                <li sec:authorize="!isAuthenticated()" class="ms-2 nav-item btn btn-outline-warning btn-sm">
+                <li sec:authorize="!isAuthenticated()"  class="ms-2 nav-item btn btn-outline-warning btn-sm">
                     <a class="nav-link text-white" href="/auth/signup">Registrar</a>
                 </li>
-                <li sec:authorize="isAuthenticated()"  class="ms-2 nav-item btn btn-outline-danger btn-sm">
+                <li sec:authorize="isAuthenticated()" class="ms-2 nav-item btn btn-outline-danger btn-sm">
                     <a class="nav-link text-white" href="/auth/logout">Salir</a>
                 </li>
                 <li class="ms-2 mt-1 nav-item ">

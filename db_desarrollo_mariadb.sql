@@ -133,7 +133,7 @@ ALTER TABLE grupos ADD FOREIGN KEY (Horario) REFERENCES horario (IdHorario);
 ALTER TABLE grupos ADD FOREIGN KEY (NoEconomico) REFERENCES profesores (NoEconomico);
 ALTER TABLE grupos ADD FOREIGN KEY (Salon) REFERENCES salon (IdSalon);
 
-INSERT INTO roles VALUES (1, 'USER'), (2, 'ADMIN');
+INSERT INTO roles VALUES (1, 'ROLE_USER'), (2, 'ROLE_ADMIN');
 
 INSERT INTO carrera VALUES (1, 'ICT'), (2, 'ISMI'), (3, 'IRH'),
                            (4, 'PP'), (5, 'EyTD'), (6, 'AyCD'),

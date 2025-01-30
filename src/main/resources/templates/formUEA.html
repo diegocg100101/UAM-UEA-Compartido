@@ -11,51 +11,59 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 <div th:insert="~{layout :: navbar}">  </div>
 
-<div class="container mt-5 text-white col-lg-3">
-    <h2 class="text-center">Ingresa los datos de la UEA:</h2>
-    <form th:object="${uea}" method="Post" th:accion="${uea.Clave == null ? '/UEA/AgregarUEA' : '/UEA/EditarUEA' + '{Clave}'}">
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required th:field="*{Nombre}">
+<div class="container text-center mt-5">
+    <div class="row justify-content-md-center">
+        <div class="card text-bg-dark col-lg-4">
+            <div class="card-header">
+                <h2 class="text-center">Ingresa los datos de la UEA</h2>
+            </div>
+            <div class="body">
+                <form th:object="${uea}" method="Post" th:accion="${uea.Clave == null ? '/UEA/AgregarUEA' : '/UEA/EditarUEA' + '{Clave}'}">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required th:field="*{Nombre}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="clave" class="form-label">Clave</label>
+                        <input type="text" class="form-control" id="clave" name="clave" required th:field="*{Clave}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="unidad" class="form-label">Unidad</label>
+                        <select class="form-select" id="unidad" name="unidad" required th:field="*{Unidad.idUnidad}">
+                            <option value=0>Selecciona una unidad</option>
+                            <option
+                                    th:each="unidad : ${unidades}"
+                                    th:value="${unidad.IdUnidad}"
+                                    th:text="${unidad.Nombre}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tronco" class="form-label">Tronco</label>
+                        <select class="form-select" id="tronco" name="tronco" required th:field="*{Tronco.idTronco}">
+                            <option value=0>Selecciona un tronco</option>
+                            <option th:each="tronco : ${troncos}"
+                                    th:value="${tronco.IdTronco}"
+                                    th:text="${tronco.Nombre}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="trimestre" class="form-label">Trimestre</label>
+                        <select class="form-select" id="trimestre" name="trimestre" required th:field="*{Trimestre.idTrimestre}">
+                            <option value=0>Selecciona un trimestre</option>
+                            <option th:each="trimestre : ${trimestres}"
+                                    th:value="${trimestre.IdTrimestre}"
+                                    th:text="${trimestre.Nombre}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="creditos" class="form-label">Créditos</label>
+                        <input type="number" class="form-control" id="creditos" name="creditos" required th:field="*{Creditos}">
+                    </div>
+                    <button type="submit" class="btn btn-success mb-5" th:text="${uea.Clave == null ? 'Enviar' : 'Actualizar'}">Enviar</button>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="clave" class="form-label">Clave</label>
-            <input type="text" class="form-control" id="clave" name="clave" required th:field="*{Clave}">
-        </div>
-        <div class="mb-3">
-            <label for="unidad" class="form-label">Unidad</label>
-            <select class="form-select" id="unidad" name="unidad" required th:field="*{Unidad.idUnidad}">
-                <option value=0>Selecciona una unidad</option>
-                <option
-                        th:each="unidad : ${unidades}"
-                        th:value="${unidad.IdUnidad}"
-                        th:text="${unidad.Nombre}"></option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="tronco" class="form-label">Tronco</label>
-            <select class="form-select" id="tronco" name="tronco" required th:field="*{Tronco.idTronco}">
-                <option value=0>Selecciona un tronco</option>
-                <option th:each="tronco : ${troncos}"
-                        th:value="${tronco.IdTronco}"
-                        th:text="${tronco.Nombre}"></option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="trimestre" class="form-label">Trimestre</label>
-            <select class="form-select" id="trimestre" name="trimestre" required th:field="*{Trimestre.idTrimestre}">
-                <option value=0>Selecciona un trimestre</option>
-                <option th:each="trimestre : ${trimestres}"
-                        th:value="${trimestre.IdTrimestre}"
-                        th:text="${trimestre.Nombre}"></option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="creditos" class="form-label">Créditos</label>
-            <input type="number" class="form-control" id="creditos" name="creditos" required th:field="*{Creditos}">
-        </div>
-        <button type="submit" class="btn btn-primary" th:text="${uea.Clave == null ? 'Enviar' : 'Actualizar'}">Enviar</button>
-    </form>
+    </div>
 </div>
 
 </body>

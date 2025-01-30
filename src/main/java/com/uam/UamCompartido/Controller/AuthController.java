@@ -77,16 +77,20 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String authenticate(@ModelAttribute("userLogin") LoginUserDTO loginUserDTO, HttpServletResponse response){
-        Usuarios usuariosAutenticado = authService.authenticate(loginUserDTO);
-        String jwtToken = jwtService.generateToken(usuariosAutenticado);
-
-        Cookie cookie = new Cookie("jwt", jwtToken);
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        cookie.setPath("/");
-        response.addCookie(cookie);
-        return "redirect:/";
+    public String authenticate(@ModelAttribute("userLogin") LoginUserDTO loginUserDTO, HttpServletResponse response, Model model) {
+        try {
+            Usuarios usuariosAutenticado = authService.authenticate(loginUserDTO);
+            String jwtToken = jwtService.generateToken(usuariosAutenticado);
+            Cookie cookie = new Cookie("jwt", jwtToken);
+            cookie.setHttpOnly(true);
+            cookie.setSecure(true);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            return "redirect:/";
+        } catch (Exception e) {
+            model.addAttribute("error", "Autenticación incorrecta");
+            return "login";
+        }
     }
 
     @GetMapping("/logout")

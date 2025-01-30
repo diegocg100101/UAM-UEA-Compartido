@@ -16,30 +16,16 @@
                     <br>
                     <img src="/img/pantera.png" width="70" height="60" class="d-inline-block align-center" alt="">
                     <br><br>
-                    <h1>¡Bienvenidos!</h1>
+                    <h1>¡Bienvenido!</h1>
                 </div>
 
                 <div class="card-body">
-                    <h4>Esto es una prueba de cómo funciona la página principal:)</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div sec:authorize="hasRole('USER')" class="row justify-content-center">
-    <div class="col-lg-4">
-        <div class="container mt-5 text-center">
-            <div class="card text-bg-dark">
-                <div class="card-header">
-                    <br>
-                    <img src="/img/pantera.png" width="70" height="60" class="d-inline-block align-center" alt="">
-                    <br><br>
-                    <h1>Esta es una prueba</h1>
-                </div>
-
-                <div class="card-body">
-                    <h4>Prueba de seguridad</h4>
+                    <div sec:authorize="!isAuthenticated()">
+                        <h4>Regístrate o inicia sesión para acceder a todas las características</h4>
+                    </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <h4>Realiza las altas a UEAs compartidas</h4>
+                    </div>
                 </div>
             </div>
         </div>
