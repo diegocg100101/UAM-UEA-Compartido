@@ -65,8 +65,13 @@ public class GruposController {
 
     @PostMapping("/add")
     public String addGrupo(@ModelAttribute("grupo") Grupos grupo, Model model) {
-        gruposDAOImplementation.Save(grupo);
-        return "redirect:/grupos/add";
+        try {
+            gruposDAOImplementation.Save(grupo);
+            return "redirect:/grupos/add";
+        } catch (Exception e) {
+            model.addAttribute("erro", "Alta incorrecta, verifica los campos");
+            return "redirect:/grupos/add";
+        }
     }
 
     @GetMapping("/list")
