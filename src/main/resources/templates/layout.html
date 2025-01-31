@@ -43,7 +43,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/UEA/AgregarUEA" sec:authorize="hasRole('USER')">Alta UEA</a></li>
-                            <li><a class="dropdown-item" href="/UEA/ListadoUEA">Búsqueda</a></li>
+                            <li><a class="dropdown-item" th:href="@{/UEA/ListadoUEA/{filtro} (filtro = 'clave') }">Búsqueda</a></li>
                         </ul>
                     </div>
                 </li>

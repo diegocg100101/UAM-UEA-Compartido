@@ -40,10 +40,11 @@ public class UEAController {
         return "UEA";
     }
     
-    @GetMapping("/ListadoUEA")
-    public String ListaUEA(Model model){
+    @GetMapping("/ListadoUEA/{filtro}")
+    public String ListaUEA(@PathVariable("filtro") String filtro,  Model model){
         List<UEA> ueas = ueaDAOImplementation.GetAll();
         model.addAttribute("ueas", ueas);
+        model.addAttribute("filtro", filtro);
         return "listUEA";
     }
 
@@ -105,6 +106,7 @@ public class UEAController {
     public String BuscarUEA(@RequestParam("busqueda") String clave, Model model){
         List<UEA> ueas = ueaDAOImplementation.GetAllByClave(clave);
         model.addAttribute("ueas", ueas);
+        model.addAttribute("filtro", "clave");
         return "listUEA";
     }
 
@@ -112,8 +114,8 @@ public class UEAController {
     public String BuscarNOMBRE(@RequestParam("nombre") String nombre, Model model){
         List<UEA> ueas = ueaDAOImplementation.GetByNombre(nombre);
         model.addAttribute("ueas", ueas);
+        model.addAttribute("filtro", "nombre");
         return "listUEA";
     }
-
 
 }

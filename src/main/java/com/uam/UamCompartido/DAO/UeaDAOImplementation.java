@@ -62,7 +62,7 @@ public class UeaDAOImplementation implements UeaDAO{
     @Transactional
     public void Edit(UEA uea) {
         try {
-            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM UEA WHERE Clave = :clave", UEA.class);
+            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM uea WHERE Clave = :clave", UEA.class);
             queryUEA.setParameter("clave", uea.getClave());
             UEA ueaDB = queryUEA.getSingleResult();
             ueaDB.setNombre(uea.getNombre());
@@ -92,7 +92,7 @@ public class UeaDAOImplementation implements UeaDAO{
     public List<UEA> GetAllByClave(String clave) {
         List<UEA> ueas = new ArrayList<>();
         try {
-            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM UEA WHERE Clave LIKE :clave", UEA.class);
+            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM uea WHERE Clave LIKE :clave", UEA.class);
             queryUEA.setParameter("clave", "%" + clave + "%");
             ueas = queryUEA.getResultList();
         } catch (Exception e) {
@@ -105,7 +105,7 @@ public class UeaDAOImplementation implements UeaDAO{
     public List<UEA> GetByNombre(String nombre) {
         List<UEA> ueas = new ArrayList<>();
         try {
-            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM UEA WHERE Nombre LIKE :nombre", UEA.class);
+            TypedQuery<UEA> queryUEA = entityManager.createQuery("FROM uea WHERE Nombre LIKE :nombre", UEA.class);
             queryUEA.setParameter("nombre", "%" + nombre + "%");
             ueas = queryUEA.getResultList();
         } catch (Exception e) {
