@@ -35,7 +35,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/grupos/**").authenticated()
+                        .requestMatchers("/grupos/**", "/UEA/**", "/grupos/**").authenticated()
                         .requestMatchers("/user/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()

@@ -60,15 +60,18 @@
                     </div>
                 </li>
 
+                <li sec:authorize="isAuthenticated()" class="ms-2 nav-item btn btn-outline-success btn-sm">
+                    <a class="nav-link text-white" href="/user/me"><i class="bi bi-person"></i> Mis datos</a>
+                </li>
                 <!--sec:authorize="hasRole('USER')"-->
                 <li sec:authorize="!isAuthenticated()" class="ms-2 nav-item btn btn-outline-success btn-sm">
                     <a class="nav-link text-white" href="/auth/login">Ingresar</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()"  class="ms-2 nav-item btn btn-outline-warning btn-sm">
-                    <a class="nav-link text-white" href="/auth/signup">Registrar</a>
+                    <a class="nav-link text-white" href="/auth/signup"><i class="bi bi-person-plus"></i> Registrar</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="ms-2 nav-item btn btn-outline-danger btn-sm">
-                    <a class="nav-link text-white" href="/auth/logout">Salir</a>
+                    <a class="nav-link text-white" href="/auth/logout"><i class="bi bi-box-arrow-right"></i> Salir</a>
                 </li>
                 <li class="ms-2 mt-1 nav-item ">
                     <a class="nav-link text-white" href="/AcercaDe">Acerca de</a>

@@ -25,11 +25,11 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<Usuarios> authenticatedUser(){
+    public String authenticatedUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Usuarios usuario = (Usuarios)authentication.getPrincipal();
 
-        return ResponseEntity.ok(usuario);
+        return "user";
     }
 
     @GetMapping("/")
