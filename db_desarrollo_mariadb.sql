@@ -84,7 +84,7 @@ CREATE TABLE carrera
 CREATE TABLE usuarios
 (
                          NoEconomico VARCHAR(10) PRIMARY KEY,
-                         Email VARCHAR(20),
+                         Email VARCHAR(50),
                          Password VARCHAR(100),
                          IdRol INT,
                          Nombre VARCHAR(20),
