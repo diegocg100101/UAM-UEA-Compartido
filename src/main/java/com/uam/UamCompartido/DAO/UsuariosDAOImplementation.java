@@ -1,5 +1,6 @@
 package com.uam.UamCompartido.DAO;
 
+import com.uam.UamCompartido.Model.UEA;
 import com.uam.UamCompartido.Model.Usuarios;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -21,6 +22,17 @@ public class UsuariosDAOImplementation implements UsuariosDAO{
     private EntityManager entityManager;
 
     @Override
+    public Usuarios getByNumero(String numero) {
+        Usuarios usuario = new Usuarios();
+        try {
+            usuario = entityManager.find(Usuarios.class, numero);
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+        }
+        return usuario;
+    }
+
+    @Override
     public Optional<Usuarios> findByEmail(String email) {
         List<Usuarios> usuarios = new ArrayList<>();
         Optional<Usuarios> usuario;
@@ -38,7 +50,7 @@ public class UsuariosDAOImplementation implements UsuariosDAO{
     public List<Usuarios> getAll() {
         List<Usuarios> usuarios = new ArrayList<>();
         try {
-            TypedQuery<Usuarios> queryUsers = entityManager.createQuery("FROM Usuarios", Usuarios.class);
+            TypedQuery<Usuarios> queryUsers = entityManager.createQuery("FROM usuarios ", Usuarios.class);
             usuarios = queryUsers.getResultList();
         } catch (Exception e){
             String ex = e.getLocalizedMessage();

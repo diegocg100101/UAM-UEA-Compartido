@@ -27,7 +27,7 @@ public class Grupos {
 
     @OneToOne
     @JoinColumn(name = "noeconomico")
-    private Profesores profesor;
+    private Usuarios profesor;
 
     @Column(name = "cupounidad")
     private int cupoUnidad;
@@ -39,7 +39,7 @@ public class Grupos {
     public Grupos() {
         this.unidad = new Unidad();
         this.horario = new Horario();
-        this.profesor = new Profesores();
+        this.profesor = new Usuarios();
         this.salon = new Salon();
         this.uea = new UEA();
     }
@@ -76,11 +76,11 @@ public class Grupos {
         this.horario = horario;
     }
 
-    public Profesores getProfesor() {
+    public Usuarios getProfesor() {
         return profesor;
     }
 
-    public void setProfesor(Profesores profesor) {
+    public void setProfesor(Usuarios profesor) {
         this.profesor = profesor;
     }
 

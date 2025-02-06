@@ -18,6 +18,17 @@
         </div>
 </div>
 
+<div class="container text-center mt-1">
+        <div class="row justify-content-md-center">
+                <div class="col-md-4">
+                        <div th:if="${succ}" class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+                                <span th:text="${succ}" ></span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                </div>
+        </div>
+</div>
+
 <div class="row justify-content-center">
         <div class="col-lg-6">
                 <div class="container mt-5">
@@ -79,9 +90,9 @@
                                                                 <select class="form-select" id="profesores" name="profesor" required th:field="*{profesor.noEconomico}">
                                                                         <option value=0>Selecciona el profesor</option>
                                                                         <option
-                                                                                th:each="profesor : ${profesores}"
+                                                                                th:each="profesor : ${usuarios}"
                                                                                 th:value="${profesor.noEconomico}"
-                                                                                th:text="${profesor.nombre + ' ' + profesor.apellidoPaterno + ' ' + profesor.apellidoPaterno}"></option>
+                                                                                th:text="${ profesor.noEconomico + ' ' + profesor.nombre + ' ' + profesor.apellidoPaterno + ' ' + profesor.apellidoPaterno}"></option>
                                                                 </select>
                                                         </div>
 

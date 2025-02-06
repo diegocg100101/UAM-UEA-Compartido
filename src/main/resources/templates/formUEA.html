@@ -11,6 +11,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 <div th:insert="~{layout :: navbar}">  </div>
 
+<div class="container text-center mt-1">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-5" role="alert">
+                <span th:text="${error}" ></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container text-center mt-5">
     <div class="row justify-content-md-center">
         <div class="card text-bg-dark col-lg-4">

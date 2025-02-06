@@ -30,6 +30,8 @@ public class AuthService {
 
     @Autowired
     private ProfesoresDAOImplementation profesoresDAOImplementation;
+    @Autowired
+    private UsuariosDAOImplementation usuariosDAOImplementation;
 
     public AuthService(PasswordEncoder passwordEncoder, ProfesoresDAOImplementation profesoresDAO, AlumnosDAOImplementation alumnosDAOImplementation, UsuariosDAOImplementation usuarioDAO, AuthenticationManager authenticationManager) {
         this.passwordEncoder = passwordEncoder;
@@ -57,11 +59,19 @@ public class AuthService {
 
     // signup
     public Usuarios signup(SignupUserDTO input){
-        Usuarios usuarios = new Usuarios();
-        usuarios.setEmail(input.getEmail());
-        usuarios.setPassword(passwordEncoder.encode(input.getPassword()));
+        Usuarios usuario = new Usuarios();
+        usuario.setEmail(input.getEmail());
+        usuario.setPassword(passwordEncoder.encode(input.getPassword()));
+        usuario.setNoEconomico(input.getNoEconomico().isEmpty() ? null : input.getNoEconomico());
+        usuario.setNombre(input.getNombre());
+        usuario.setApellidoMaterno(input.getApellidoMaterno());
+        usuario.setApellidoPaterno(input.getApellidoPaterno());
+        usuario.setUnidad(entityManager.find(Unidad.class, input.getIdUnidad()));
+        usuario.setDepartamento(entityManager.find(Departamento.class, input.getIdDepartamento()));
+        usuario.setDivision(entityManager.find(Division.class, input.getIdDivision()));
+        usuario.setRol(entityManager.find(Roles.class, 1));
 
-        if(input.getNoEconomico() == null){
+        /*if(input.getNoEconomico() == null){
             Alumnos alumno = new Alumnos();
             alumno.setMatricula(input.getMatricula());
             alumno.setNombre(input.getNombre());
@@ -72,9 +82,9 @@ public class AuthService {
             alumno.setUnidad(entityManager.find(Unidad.class, input.getIdUnidad()));
             alumnosDAOImplementation.save(alumno);
 
-            usuarios.setRol(entityManager.find(Roles.class, 1));
-            usuarios.setClave(input.getMatricula());
-            usuarios.setTipo("alumno");
+            usuario.setRol(entityManager.find(Roles.class, 1));
+            usuario.setClave(input.getMatricula());
+            usuario.setTipo("alumno");
         } else if(input.getMatricula() == null) {
             Profesores profesor = new Profesores();
             profesor.setNoEconomico(input.getNoEconomico());
@@ -86,11 +96,11 @@ public class AuthService {
             profesor.setDivision(entityManager.find(Division.class, input.getIdDivision()));
             profesoresDAOImplementation.save(profesor);
 
-            usuarios.setRol(entityManager.find(Roles.class, 1));
-            usuarios.setClave(input.getNoEconomico());
-            usuarios.setTipo("profesor");
-        }
-        return usuarioDAO.save(usuarios);
+            usuario.setRol(entityManager.find(Roles.class, 1));
+            usuario.setClave(input.getNoEconomico());
+            usuario.setTipo("profesor");
+        }*/
+        return usuariosDAOImplementation.save(usuario);
     }
 
     public Usuarios authenticate(LoginUserDTO input){

@@ -7,3 +7,33 @@
 <!-- Navbar -->
 
 <div th:insert="~{layout :: navbar}"></div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-4 mt-5">
+        <div class="container">
+
+
+
+            <div class="card mb-3 text-bg-dark" style="max-width: 540px;">
+                <div class="row g-0 mt-4">
+                    <div class="col-md-4 text-center mt-4">
+                        <img src="/img/user.png" class="img-fluid rounded-start" width="100">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title"><span th:text="${usuario.nombre + ' ' + usuario.apellidoPaterno + ' ' + usuario.apellidoMaterno}"></span></h3>
+                            <p class="card-text"><h5>No. económico:</h5> <span th:text="${usuario.noEconomico}"></span></p>
+                            <p class="card-text"><h5>Departamento:</h5> <span th:text="${usuario.departamento.nombre}"></span></p>
+                            <p class="card-text"><h5>Unidad:</h5> <span th:text="${usuario.unidad.nombre}"></span></p>
+                            <p class="card-text"><h5>Divisón: </h5> <span th:text="${usuario.division.nombre}"></span></p>
+                            <p class="card-text"><h5>Rol: </h5> <span th:text="${usuario.rol.nombre}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

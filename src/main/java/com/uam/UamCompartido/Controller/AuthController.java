@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -65,9 +66,16 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public String register(@ModelAttribute("user") SignupUserDTO signupUserDTO){
-        Usuarios usuariosRegistrado = authService.signup(signupUserDTO);
-        return "redirect:/auth/signup";
+    public String register(@ModelAttribute("user") SignupUserDTO signupUserDTO, Model model,
+                           RedirectAttributes redirectAttributes){
+        try {
+            Usuarios usuariosRegistrado = authService.signup(signupUserDTO);
+            redirectAttributes.addFlashAttribute("success", "Registro exitoso");
+            return "redirect:/auth/signup";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("err", "Verifique los campos" );
+            return "redirect:/auth/signup";
+        }
     }
 
     @GetMapping("/login")

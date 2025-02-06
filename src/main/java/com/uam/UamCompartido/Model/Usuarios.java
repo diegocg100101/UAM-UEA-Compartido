@@ -16,17 +16,14 @@ import java.util.Collections;
 public class Usuarios implements UserDetails {
 
     @Id
+    @Column(name = "noeconomico")
+    private String noEconomico;
+
     @Column(name = "Email")
     private String email;
 
     @Column(name = "Password")
     private String password;
-
-    @Column(name = "Clave")
-    private String clave;
-
-    @Column(name = "Tipo")
-    private String Tipo;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idrol")
@@ -36,6 +33,26 @@ public class Usuarios implements UserDetails {
         this.Rol = new Roles();
     }
 
+    @Column(name = "nombre")
+    private String Nombre;
+
+    @Column(name = "apellidopaterno")
+    private String ApellidoPaterno;
+
+    @Column(name = "apellidomaterno")
+    private String ApellidoMaterno;
+
+    @ManyToOne
+    @JoinColumn(name = "idunidad")
+    private Unidad Unidad;
+
+    @ManyToOne
+    @JoinColumn(name = "iddepartamento")
+    private Departamento departamento;
+
+    @ManyToOne
+    @JoinColumn(name = "iddivision")
+    private Division division;
 
     public com.uam.UamCompartido.Model.Roles getRol() {
         return Rol;
@@ -43,23 +60,6 @@ public class Usuarios implements UserDetails {
 
     public void setRol(com.uam.UamCompartido.Model.Roles rol) {
         Rol = rol;
-    }
-
-    public String getTipo() {
-        return Tipo;
-    }
-
-    public void setTipo(String tipo) {
-        Tipo = tipo;
-    }
-
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
     }
 
     public String getUsername() {
@@ -77,6 +77,66 @@ public class Usuarios implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNoEconomico() {
+        return noEconomico;
+    }
+
+    public void setNoEconomico(String noEconomico) {
+        this.noEconomico = noEconomico;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.Nombre = nombre;
+    }
+
+    public String getApellidoPaterno() {
+        return ApellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        ApellidoPaterno = apellidoPaterno;
+    }
+
+    public String getApellidoMaterno() {
+        return ApellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        ApellidoMaterno = apellidoMaterno;
+    }
+
+    public Unidad getUnidad() {
+        return Unidad;
+    }
+
+    public void setUnidad(Unidad unidad) {
+        Unidad = unidad;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public Division getDivision() {
+        return division;
+    }
+
+    public void setDivision(Division division) {
+        this.division = division;
     }
 
     @Override
@@ -103,4 +163,6 @@ public class Usuarios implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
+
+
 }

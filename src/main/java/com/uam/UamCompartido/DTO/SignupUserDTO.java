@@ -4,22 +4,16 @@ package com.uam.UamCompartido.DTO;
  * @author diego
  */
 public class SignupUserDTO {
-    // Común
+
+    private String noEconomico;
     private String email;
     private String password;
     private String nombre;
     private String apellidoMaterno;
     private String apellidoPaterno;
     private int idUnidad;
-    private int idDivision;
-
-    // Profesores
-    private String noEconomico;
     private int idDepartamento;
-
-    // Alumnos
-    private String matricula;
-    private int idCarrera;
+    private int idDivision;
 
 
     public String getEmail() {
@@ -92,21 +86,5 @@ public class SignupUserDTO {
 
     public void setIdDivision(int idDivision) {
         this.idDivision = idDivision;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-    public int getIdCarrera() {
-        return idCarrera;
-    }
-
-    public void setIdCarrera(int idCarrera) {
-        this.idCarrera = idCarrera;
     }
 }

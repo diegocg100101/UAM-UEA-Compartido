@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -40,8 +41,11 @@ public class GruposController {
     @Autowired
     SalonDAOImplementation salonDAOImplementation;
 
+    @Autowired
+    UsuariosDAOImplementation usuariosDAOImplementation;
+
     @GetMapping("/add")
-    public String addGrupos(Model  model) {
+    public String addGrupos(Model model) {
         Grupos grupo = new Grupos();
 
         List<UEA> ueas = ueaDAOImplementation.GetAll();
@@ -53,8 +57,8 @@ public class GruposController {
         List<Horario> horarios = horarioDAOImplementation.GetAllHorario();
         model.addAttribute("horarios", horarios);
 
-        List<Profesores> profesores = profesoresDAOImplementation.GetAll();
-        model.addAttribute("profesores", profesores);
+        List<Usuarios> usuarios = usuariosDAOImplementation.getAll();
+        model.addAttribute("usuarios", usuarios);
 
         List<Salon> salones = salonDAOImplementation.GetAllSalon();
         model.addAttribute("salones", salones);
@@ -64,12 +68,13 @@ public class GruposController {
     }
 
     @PostMapping("/add")
-    public String addGrupo(@ModelAttribute("grupo") Grupos grupo, Model model) {
+    public String addGrupo(@ModelAttribute("grupo") Grupos grupo, Model model, RedirectAttributes redirectAttributes) {
         try {
             gruposDAOImplementation.Save(grupo);
+            redirectAttributes.addFlashAttribute("succ", "Alta exitosa");
             return "redirect:/grupos/add";
         } catch (Exception e) {
-            model.addAttribute("erro", "Alta incorrecta, verifica los campos");
+            redirectAttributes.addFlashAttribute("erro", "Alta incorrecta, verifica los campos");
             return "redirect:/grupos/add";
         }
     }

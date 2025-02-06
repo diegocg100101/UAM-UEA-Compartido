@@ -9,9 +9,14 @@ import java.util.Optional;
  * @author diego
  */
 public interface UsuariosDAO {
+
+    public Usuarios getByNumero(String numero);
+
     public Optional<?> findByEmail(String email);
 
     public List<Usuarios> getAll();
 
     public Usuarios save(Usuarios usuarios);
+
+
 }
