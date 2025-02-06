@@ -26,7 +26,7 @@
                             <p class="card-text"><h5>Departamento:</h5> <span th:text="${usuario.departamento.nombre}"></span></p>
                             <p class="card-text"><h5>Unidad:</h5> <span th:text="${usuario.unidad.nombre}"></span></p>
                             <p class="card-text"><h5>Divisón: </h5> <span th:text="${usuario.division.nombre}"></span></p>
-                            <p class="card-text"><h5>Rol: </h5> <span th:text="${usuario.rol.nombre}"></span></p>
+                            <p class="card-text"><h5>Rol: </h5> <span th:text="${usuario.rol.nombre == 'ROLE_USER' ? 'Usuario ' : 'Administrador'}"></span></p>
                         </div>
                     </div>
                 </div>
