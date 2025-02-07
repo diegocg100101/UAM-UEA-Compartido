@@ -1,6 +1,13 @@
 package com.uam.UamCompartido.Model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.uam.UamCompartido.DTO.HorarioDTO;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author diego
@@ -21,9 +28,11 @@ public class Grupos {
     @JoinColumn(name = "unidad")
     private Unidad unidad;
 
-    @OneToOne
-    @JoinColumn(name = "horario")
-    private Horario horario;
+    @Column(columnDefinition = "JSON")
+    private String horario;
+
+    @Transient
+    private List<String> horarioList;
 
     @OneToOne
     @JoinColumn(name = "noeconomico")
@@ -36,12 +45,47 @@ public class Grupos {
     @JoinColumn(name = "salon")
     private Salon salon;
 
+    @Column(name = "inscritos")
+    private int inscritos;
+
     public Grupos() {
         this.unidad = new Unidad();
-        this.horario = new Horario();
         this.profesor = new Usuarios();
         this.salon = new Salon();
         this.uea = new UEA();
+    }
+
+    public void convertirHorarioAJson() {
+        try {
+            List<HorarioDTO> horarioDTOList = new ArrayList<>();
+
+            for(String horario : horarioList) {
+                String[] dividido = horario.split(",");
+                horarioDTOList.add(new HorarioDTO(dividido[0], dividido[1]));
+            }
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            this.horario = objectMapper.writeValueAsString(horarioDTOList);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            this.horario = "[]";
+        }
+    }
+
+    public List<String> getHorarioList() {
+        return horarioList;
+    }
+
+    public void setHorarioList(List<String> horarioList) {
+        this.horarioList = horarioList;
+    }
+
+    public int getInscritos() {
+        return inscritos;
+    }
+
+    public void setInscritos(int inscritos) {
+        this.inscritos = inscritos;
     }
 
     public String getClaveGrupo() {
@@ -68,11 +112,11 @@ public class Grupos {
         this.unidad = unidad;
     }
 
-    public Horario getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Horario horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 

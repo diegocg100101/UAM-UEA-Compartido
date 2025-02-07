@@ -10,9 +10,11 @@ import java.util.List;
 public interface GruposDAO {
     public void Save(Grupos grupo);
 
-    public void Update(Grupos grupo);
+    public void Update(String clave);
 
-    public void Delete(Grupos grupo);
+    public void Delete(String clave);
 
     public List<Grupos> GetAll();
+
+    public Grupos GetByClave(String clave);
 }

@@ -1,6 +1,7 @@
 package com.uam.UamCompartido.DAO;
 
 import com.uam.UamCompartido.Model.Grupos;
+import com.uam.UamCompartido.Model.UEA;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -30,12 +31,19 @@ public class GruposDAOImplementation implements GruposDAO {
     }
 
     @Override
-    public void Update(Grupos grupo) {
+    public void Update(String clave) {
     }
 
     @Override
-    public void Delete(Grupos grupo) {
-
+    @Transactional
+    public void Delete(String clave) {
+        Grupos grupo;
+        try {
+            grupo = entityManager.find(Grupos.class, clave);
+            entityManager.remove(grupo);
+        } catch ( Exception e ) {
+            String ex = e.getLocalizedMessage();
+        }
     }
 
     @Override
@@ -49,5 +57,16 @@ public class GruposDAOImplementation implements GruposDAO {
             String ex = e.getLocalizedMessage();
         }
         return grupos;
+    }
+
+    @Override
+    public Grupos GetByClave(String clave) {
+        Grupos grupo = new Grupos();
+        try {
+            grupo = entityManager.find(Grupos.class, clave);
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+        }
+        return grupo;
     }
 }

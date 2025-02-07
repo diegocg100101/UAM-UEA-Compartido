@@ -4,6 +4,17 @@
 <body>
 <div th:insert="~{layout :: navbar}"></div>
 
+<div class="container text-center mt-1">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div th:if="${message}" class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+                <span th:text="${message}" ></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row justify-content-center mt-5">
     <div class="container mt-5 col-lg-8 text-white">
         <h2 class="text-center">Grupos en plataforma</h2>
@@ -14,10 +25,11 @@
                 <th scope="col">Clave Grupo</th>
                 <th scope="col">Clave UEA</th>
                 <th scope="col">Unidad</th>
-                <th scope="col">Horario</th>
                 <th scope="col">Profesor</th>
                 <th scope="col">Cupo Unidad</th>
+                <th scope="col">Inscritos</th>
                 <th scope="col">Salón</th>
+                <th scope="col">Acción</th>
             </tr>
             </thead>
             <tbody>
@@ -25,10 +37,15 @@
                 <td th:text="${grupo.claveGrupo}">Clave Grupo</td>
                 <td th:text="${grupo.uea.clave + ' ' + grupo.uea.nombre}">Clave UEA</td>
                 <td th:text="${grupo.unidad.nombre}">Unidad</td>
-                <td th:text="${grupo.horario.dias}">Horario</td>
                 <td th:text="${grupo.profesor.noEconomico + ' ' + grupo.profesor.nombre + ' ' + grupo.profesor.apellidoPaterno + ' ' + grupo.profesor.apellidoMaterno}">Profesor</td>
                 <td th:text="${grupo.cupoUnidad}">Cupo Unidad</td>
+                <td th:text="${grupo.inscritos}">Inscritos</td>
                 <td th:text="${grupo.salon.nombre}">Salón</td>
+                <td>
+                        <a class="btn btn-warning m-2 col-7" th:href="@{'/grupos/edit/' + ${grupo.claveGrupo}}"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-danger m-2 col-7" th:href="@{'/grupos/delete/' + ${grupo.claveGrupo} }"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-primary m-2 col-7" >Horario</a>
+                </td>
             </tr>
             </tbody>
         </table>

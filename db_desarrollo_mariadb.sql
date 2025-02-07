@@ -112,10 +112,11 @@ CREATE TABLE grupos
                        ClaveGrupo VARCHAR(10) PRIMARY KEY ,
                        ClaveUea VARCHAR(10),
                        Unidad INT,
-                       Horario INT,
+                       Horario JSON,
                        NoEconomico VARCHAR(10),
                        CupoUnidad INT,
-                       Salon INT
+                       Salon INT,
+                       Inscritos INT
 
 );
 
@@ -127,17 +128,17 @@ CREATE TABLE salon
                       Ubicacion VARCHAR(20)
 );
 
-CREATE TABLE horario
+/*CREATE TABLE horario
 (
                         IdHorario INT PRIMARY KEY ,
                         HoraInicio VARCHAR(20),
                         HoraTermino VARCHAR(20),
                         Dias VARCHAR(30)
-);
+);*/
 
 ALTER TABLE grupos ADD FOREIGN KEY (ClaveUea) REFERENCES uea (Clave);
 ALTER TABLE grupos ADD FOREIGN KEY (Unidad) REFERENCES unidad (IdUnidad);
-ALTER TABLE grupos ADD FOREIGN KEY (Horario) REFERENCES horario (IdHorario);
+# ALTER TABLE grupos ADD FOREIGN KEY (Horario) REFERENCES horario (IdHorario);
 ALTER TABLE grupos ADD FOREIGN KEY (NoEconomico) REFERENCES usuarios (NoEconomico);
 ALTER TABLE grupos ADD FOREIGN KEY (Salon) REFERENCES salon (IdSalon);
 

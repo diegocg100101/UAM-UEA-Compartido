@@ -22,3 +22,9 @@ body {
 .nav-link:hover {
     color: #e707e7;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

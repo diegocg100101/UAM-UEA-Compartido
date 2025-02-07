@@ -101,7 +101,7 @@ public class UEAController {
     public String AddUEA(@ModelAttribute("uea") UEA uea, Model model, RedirectAttributes redirectAttributes){
         try {
             ueaDAOImplementation.Add(uea);
-            return "redirect:/UEA/ListadoUEA";
+            return "redirect:/UEA/ListadoUEA/clave";
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Verifique los campos");
             return "redirect:/UEA/AgregarUEA";

@@ -38,7 +38,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                        <form th:object="${grupo}" method="post" th:accion="@{/grupos/add}">
+                                        <form th:object="${grupo}" method="post" th:accion="${grupo.claveGrupo == null ? '/grupos/add' : '/grupos/edit' + '{claveGrupo}'}">
 
 
                                                 <div class="row">
@@ -75,16 +75,9 @@
                                                                                 th:text="${unidad.nombre}"></option>
                                                                 </select>
                                                         </div>
-                                                        <div class="form-group col-md-4">
-                                                                <label for="Horario" class="form-label">Horario:</label>
-                                                                <select class="form-select" id="horario" name="horario" required th:field="*{horario.id_horario}">
-                                                                        <option value=0>Selecciona el horario</option>
-                                                                        <option
-                                                                                th:each="horario : ${horarios}"
-                                                                                th:value="${horario.id_horario}"
-                                                                                th:text="${horario.dias}"></option>
-                                                                </select>
-                                                        </div>
+
+                                                        <input type="hidden" id="selectedHorarios" name="selectedHorarios">
+
                                                         <div class="form-group col-md-4">
                                                                 <label for="profesores" class="form-label">Profesor:</label>
                                                                 <select class="form-select" id="profesores" name="profesor" required th:field="*{profesor.noEconomico}">
@@ -109,9 +102,31 @@
 
                                                                 </select>
                                                         </div>
+
+                                                        <div class="container mt-4">
+                                                                <h3 class="text-center">Seleccione el Horario</h3>
+                                                                <table class="table table-bordered text-center">
+                                                                        <thead class="table-dark">
+                                                                        <tr>
+                                                                                <th>Hora</th>
+                                                                                <th th:each="dia : ${dias}" th:text="${dia}"></th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr th:each="hora : ${horas}">
+                                                                                <td th:text="${hora}"></td>
+                                                                                <td th:each="dia : ${dias}" class="horario-cell">
+                                                                                        <input class="form-check-input" type="checkbox"
+                                                                                                th:value="${dia + ',' + hora}" th:field="*{horarioList}">
+                                                                                </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                </table>
+                                                        </div>
+
                                                 </div>
 
-                                                <button type="submit" class="btn btn-success text-center mt-5">Enviar</button>
+                                                <button type="submit" class="btn btn-success text-center mt-5" th:text="${grupo.claveGrupo == null ? 'Enviar' : 'Actualizar'}">Enviar</button>
 
                                         </form>
                                 </div>
