@@ -43,8 +43,8 @@
                 <td th:text="${grupo.salon.nombre}">Salón</td>
                 <td>
                         <a class="btn btn-warning m-2 col-7" th:href="@{'/grupos/edit/' + ${grupo.claveGrupo}}"><i class="bi bi-pencil"></i></a>
-                        <a class="btn btn-danger m-2 col-7" th:href="@{'/grupos/delete/' + ${grupo.claveGrupo} }"><i class="bi bi-trash"></i></a>
-                        <a class="btn btn-primary m-2 col-7" >Horario</a>
+                        <a class="btn btn-danger m-2 col-7" th:href="@{'/grupos/delete/' + ${grupo.claveGrupo}}"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-primary m-2 col-7" th:href="@{'/grupos/horario/' + ${grupo.claveGrupo}}">Horario</a>
                 </td>
             </tr>
             </tbody>

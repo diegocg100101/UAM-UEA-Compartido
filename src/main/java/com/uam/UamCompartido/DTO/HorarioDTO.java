@@ -7,6 +7,8 @@ public class HorarioDTO {
     private String dia;
     private String hora;
 
+    public HorarioDTO() {}
+
     public HorarioDTO(String dia, String hora) {
         this.dia = dia;
         this.hora = hora;

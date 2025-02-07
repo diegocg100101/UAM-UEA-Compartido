@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="es"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{layout :: header}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div th:insert="layout :: navbar"></div>
+
+
+<div class="row justify-content-center mt-5">
+    <div class="container mt-4 col-lg-4">
+        <h3 class="text-center text-bg-dark">Horario</h3>
+        <table class="table table-bordered text-center table-striped text-center table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>Hora</th>
+                <th th:each="dia : ${dias}" th:text="${dia}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="hora : ${horas}">
+                <td th:text="${hora}"></td>
+                <td th:each="dia : ${dias}" class="horario-cell">
+                <span th:each="horario : ${horarios}">
+                    <span th:if="${horario.dia == dia && horario.hora == hora}" class="badge text-bg-success">✔</span>
+                </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="/grupos/list" role="button">Volver a la lista</a>
+    </div>
+</div>
+
+
+
+</body>
+</html>
