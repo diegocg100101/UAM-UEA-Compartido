@@ -59,9 +59,14 @@ public class Grupos {
         try {
             List<HorarioDTO> horarioDTOList = new ArrayList<>();
 
-            for(String horario : horarioList) {
+            for (String horario : horarioList) {
                 String[] dividido = horario.split(",");
-                horarioDTOList.add(new HorarioDTO(dividido[0], dividido[1]));
+                if (dividido.length == 1) {
+                    horarioDTOList.add(new HorarioDTO(horarioList.get(0), horarioList.get(1)));
+                    break;
+                } else {
+                    horarioDTOList.add(new HorarioDTO(dividido[0], dividido[1]));
+                }
             }
 
             ObjectMapper objectMapper = new ObjectMapper();
