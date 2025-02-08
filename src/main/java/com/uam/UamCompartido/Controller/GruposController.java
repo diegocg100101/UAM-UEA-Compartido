@@ -98,10 +98,10 @@ public class GruposController {
     public String EliminarUEA(@PathVariable("clave") String clave, RedirectAttributes redirectAttributes) {
         try {
             gruposDAOImplementation.Delete(clave);
-            redirectAttributes.addFlashAttribute("message", "Eliminado exitosa");
+            redirectAttributes.addFlashAttribute("message", "Eliminado exitosamente");
             return "redirect:/grupos/list";
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("message", "Eliminado fallido");
+            redirectAttributes.addFlashAttribute("message", "Fallo");
             return "redirect:/grupos/list";
         }
     }
