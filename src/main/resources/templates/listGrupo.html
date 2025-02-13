@@ -16,33 +16,38 @@
 </div>
 
 <div class="row justify-content-center mt-5">
-    <div class="container mt-5 col-lg-8 text-white">
-        <h2 class="text-center">Grupos en plataforma</h2>
+    <div class="container col-lg-2">
+        <h2 class="text-center text-white">Grupos en plataforma</h2>
+
+        <div class="text-center" th:if="${unidad}" >
+            <h3 class="text-center text-bg-purple" th:if="${unidad == 'Lerma'}" th:text="${unidad}"></h3>
+            <h3 class="text-center text-bg-success" th:if="${unidad == 'Iztapalapa'}" th:text="${unidad}"></h3>
+            <h3 class="text-center text-bg-danger" th:if="${unidad == 'Azcapotzalco'}" th:text="${unidad}"></h3>
+            <h3 class="text-center text-bg-warning" th:if="${unidad == 'Cuajimalpa'}" th:text="${unidad}"></h3>
+            <h3 class="text-center text-bg-primary" th:if="${unidad == 'Xochimilco'}" th:text="${unidad}"></h3>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+
+    <div class="container col-lg-8 text-white">
 
         <div class="container col-lg-4">
             <div class="row">
-                <div class="col-lg-8">
-                    <form class="form-inline my-2 my-lg-0"  th:action="@{/UEA/BuscarUEA}" method="get">
-                        <input class="form-control mr-sm-2 mb-2" type="search" name="busqueda" placeholder="Búsqueda por clave" aria-label="Search">
-                        <button class="btn btn-success mb-2" type="submit">Buscar</button>
+                    <form class="form-inline my-2 my-lg-0"  th:action="@{/grupos/buscar_unidad}" method="get">
+                        <select class="form-select" id="unidad" name="unidad" th:onchange="this.form.submit()">
+                            <option value=0>Selecciona una unidad</option>
+                            <option
+                                    th:each="unidad : ${unidades}"
+                                    th:value="${unidad.idUnidad}"
+                                    th:text="${unidad.nombre}"></option>
+                        </select>
                     </form>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Filtro
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item">Buscar por clave</a></li>
-                            <li><a class="dropdown-item">Buscar por UEA</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <table class="table table-dark table-striped text-center">
+        <table class="table table-dark table-striped text-center mt-4">
             <thead>
             <tr>
                 <th scope="col">Clave Grupo</th>
@@ -60,7 +65,7 @@
                 <td th:text="${grupo.claveGrupo}">Clave Grupo</td>
                 <td th:text="${grupo.uea.clave + ' ' + grupo.uea.nombre}">Clave UEA</td>
                 <td th:text="${grupo.unidad.nombre}">Unidad</td>
-                <td th:text="${grupo.profesor.noEconomico + ' ' + grupo.profesor.nombre + ' ' + grupo.profesor.apellidoPaterno + ' ' + grupo.profesor.apellidoMaterno}">Profesor</td>
+                <td th:text="${grupo.profesor.noEconomico + ' ' + grupo.profesor.nombre + ' ' + grupo.profesor.apellidoPaterno + ' ' + grupo.profesor.apellidoMaterno + ' ' + grupo.profesor.email}">Profesor</td>
                 <td th:text="${grupo.cupoUnidad}">Cupo Unidad</td>
                 <td th:text="${grupo.inscritos}">Inscritos</td>
                 <td th:text="${grupo.salon.nombre}">Salón</td>
@@ -68,6 +73,7 @@
                         <a class="btn btn-warning m-2 col-7" th:href="@{'/grupos/edit/' + ${grupo.claveGrupo}}"><i class="bi bi-pencil"></i></a>
                         <a class="btn btn-danger m-2 col-7" th:href="@{'/grupos/delete/' + ${grupo.claveGrupo}}"><i class="bi bi-trash"></i></a>
                         <a class="btn btn-primary m-2 col-7" th:href="@{'/grupos/horario/' + ${grupo.claveGrupo}}">Horario</a>
+                        <a class="btn btn-success m-2 col-7" >Compartir</a>
                 </td>
             </tr>
             </tbody>

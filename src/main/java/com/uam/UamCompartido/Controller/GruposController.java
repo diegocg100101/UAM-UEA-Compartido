@@ -91,6 +91,9 @@ public class GruposController {
     public String ListarGrupos(Model model) {
         List<Grupos> grupos = gruposDAOImplementation.GetAll();
         model.addAttribute("grupos", grupos);
+
+        List<Unidad> unidades = unidadDAOImplementation.GetAll();
+        model.addAttribute("unidades", unidades);
         return "listGrupo";
     }
 
@@ -133,6 +136,12 @@ public class GruposController {
         return "grupos";
     }
 
+    @PostMapping("/edit/{clave}")
+    public String editGrupos(@ModelAttribute("grupo") Grupos grupo) {
+        gruposDAOImplementation.Update(grupo);
+        return "redirect:/grupos/list";
+    }
+
     @GetMapping("/horario/{clave}")
     public String horario(@PathVariable("clave") String clave, Model model) throws JsonProcessingException {
         Grupos grupo = gruposDAOImplementation.GetByClave(clave);
@@ -157,5 +166,19 @@ public class GruposController {
         model.addAttribute("grupo", grupo);
 
         return "horario";
+    }
+
+    @GetMapping("/buscar_unidad")
+    public String buscarUnidad(@RequestParam("unidad") String unidad, Model model) {
+        List<Grupos> grupos = gruposDAOImplementation.GetByUnidad(unidad);
+        model.addAttribute("grupos", grupos);
+
+        List<Unidad> unidades = unidadDAOImplementation.GetAll();
+        model.addAttribute("unidades", unidades);
+
+        if(Integer.parseInt(unidad) >= 1)
+            model.addAttribute("unidad", unidades.get(Integer.parseInt(unidad) - 1).getNombre());
+
+        return "listGrupo";
     }
 }

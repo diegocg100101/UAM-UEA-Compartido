@@ -31,7 +31,24 @@ public class GruposDAOImplementation implements GruposDAO {
     }
 
     @Override
-    public void Update(String clave) {
+    public void Update(Grupos grupo) {
+        try {
+            TypedQuery<Grupos> queryGrupos = entityManager.createQuery("FROM grupos WHERE claveGrupo = :clave", Grupos.class);
+            queryGrupos.setParameter("clave", grupo.getClaveGrupo());
+            Grupos grupoDB = queryGrupos.getSingleResult();
+
+            grupoDB.setUea(grupo.getUea());
+            grupoDB.setUnidad(grupo.getUnidad());
+            grupoDB.setHorario(grupo.getHorario());
+            grupoDB.setProfesor(grupo.getProfesor());
+            grupoDB.setCupoUnidad(grupo.getCupoUnidad());
+            grupoDB.setSalon(grupo.getSalon());
+            grupoDB.setInscritos(grupo.getInscritos());
+
+            entityManager.merge(grupoDB);
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+        }
     }
 
     @Override
@@ -68,5 +85,18 @@ public class GruposDAOImplementation implements GruposDAO {
             String ex = e.getLocalizedMessage();
         }
         return grupo;
+    }
+
+    @Override
+    public List<Grupos> GetByUnidad(String unidad) {
+        List<Grupos> grupos = new ArrayList<>();
+        try {
+            TypedQuery<Grupos> queryGrupos = entityManager.createQuery("FROM grupos g WHERE g.unidad.IdUnidad = :unidad", Grupos.class);
+            queryGrupos.setParameter("unidad", Integer.parseInt(unidad));
+            grupos = queryGrupos.getResultList();
+        } catch (Exception e) {
+            String ex = e.getLocalizedMessage();
+        }
+        return grupos;
     }
 }

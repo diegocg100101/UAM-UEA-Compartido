@@ -48,12 +48,13 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                                 <label for="clave_uea" class="form-label">Clave de UEA:</label>
-                                                                <select class="form-select" id="clave_uea" name="clave_uea" required th:field="*{uea.clave}">
+                                                                <select class="form-select" id="clave_uea" name="clave_uea" required th:field="*{uea.clave}" onchange="creaClaveUEA()">
                                                                         <option value=0>Selecciona una unidad</option>
                                                                         <option
                                                                                 th:each="uea : ${ueas}"
                                                                                 th:value="${uea.clave}"
-                                                                                th:text="${uea.clave + ' ' + uea.nombre}"></option>
+                                                                                th:text="${uea.clave + ' ' + uea.nombre}"a
+                                                                        ></option>
                                                                 </select>
                                                         </div>
                                                         <div class="form-group col-md-4">
@@ -67,7 +68,7 @@
                                                 <div class="row">
                                                         <div class="form-group col-md-4">
                                                                 <label for="unidad" class="form-label">Unidad</label>
-                                                                <select class="form-select" id="unidad" name="unidad" required th:field="*{unidad.idUnidad}">
+                                                                <select class="form-select" id="unidad" name="unidad" required th:field="*{unidad.idUnidad}" onchange="creaClaveUnidad()">
                                                                         <option value=0>Selecciona una unidad</option>
                                                                         <option
                                                                                 th:each="unidad : ${unidades}"
@@ -85,7 +86,8 @@
                                                                         <option
                                                                                 th:each="profesor : ${usuarios}"
                                                                                 th:value="${profesor.noEconomico}"
-                                                                                th:text="${ profesor.noEconomico + ' ' + profesor.nombre + ' ' + profesor.apellidoPaterno + ' ' + profesor.apellidoPaterno}"></option>
+                                                                                th:text="${profesor.noEconomico + ' ' + profesor.nombre + ' ' + profesor.apellidoPaterno + ' ' + profesor.apellidoPaterno}"
+                                                                        ></option>
                                                                 </select>
                                                         </div>
 
@@ -98,11 +100,24 @@
                                                                         <option
                                                                                 th:each="salon : ${salones}"
                                                                                 th:value ="${salon.idSalon}"
-                                                                                th:text="${salon.nombre}"></option>
+                                                                                th:text="${salon.nombre}"
 
+                                                                        ></option>
                                                                 </select>
                                                         </div>
 
+                                                </div>
+
+                                                <div class="row">
+                                                        <div class="form-group col-md-4 d-flex align-items-center justify-content-center">
+                                                                <label class="form-check-label" for="virtual">
+                                                                        Virtual:
+                                                                </label>
+                                                                <input class="form-check-input" type="checkbox" id="virtual" onclick="ponerVirtual()">
+                                                        </div>
+                                                </div>
+
+                                                <div class="row">
                                                         <div class="container mt-4">
                                                                 <h3 class="text-center">Seleccione el Horario</h3>
                                                                 <table class="table table-bordered text-center">
@@ -117,15 +132,13 @@
                                                                                 <td th:text="${hora}"></td>
                                                                                 <td th:each="dia : ${dias}" class="horario-cell">
                                                                                         <input class="form-check-input" type="checkbox"
-                                                                                                th:value="${dia + ',' + hora}" th:field="*{horarioList}">
+                                                                                               th:value="${dia + ',' + hora}" th:field="*{horarioList}">
                                                                                 </td>
                                                                         </tr>
                                                                         </tbody>
                                                                 </table>
                                                         </div>
-
                                                 </div>
-
                                                 <button type="submit" class="btn btn-success text-center mt-5" th:text="${grupo.claveGrupo == null ? 'Enviar' : 'Actualizar'}">Enviar</button>
 
                                         </form>
@@ -135,6 +148,7 @@
         </div>
 </div>
 
+<script src="/js/gruposValidation.js"></script>
 
 </body>
 </html>
